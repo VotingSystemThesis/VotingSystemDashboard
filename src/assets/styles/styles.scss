@@ -1,0 +1,210 @@
+$buttonColor: #3a3cac;
+$secondButtonColor: #74afb7;
+
+$buttonOnHoverColor: #a3581a;
+$formdarkColorBackground: rgb(32 38 43);
+$backgroundDarkColor: rgb(66, 78, 89);
+$backgroundLightColor: #f4fcf1;
+$titleFont: "Poppins", sans-serif;
+
+$mainBackgroundColor: #e1e4fd;
+$secondBackgroundColor: #f8f9ff;
+$cardColor: white;
+
+@mixin center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin title {
+  h3 {
+    font-family: $titleFont;
+  }
+  h1 {
+    font-family: $titleFont;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  h1.dark {
+    color: white;
+  }
+  @media screen and (max-width: 900px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@mixin form-controller($colums) {
+  @each $columname, $props in $colums {
+    .form-controller {
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      p.error {
+        color: red;
+        font-size: 10px;
+        margin-left: 20px;
+        text-align: left;
+      }
+      label {
+        width: 100%;
+        font-weight: bold;
+        font-family: $titleFont;
+        height: auto;
+        font-size: 1.3rem;
+        color: black;
+      }
+      .form-container {
+        border: 1px solid;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        border: solid 2px;
+        border-color: #d0d4d9;
+        @if map-has-key($props, "radius") {
+          border-radius: map-get($props, "radius");
+        }
+
+        padding: 5px;
+      }
+      textarea:focus,
+      input:focus {
+        outline: none;
+      }
+      ::placeholder {
+        font-weight: bold;
+      }
+      input {
+        width: 90%;
+        height: 50px;
+
+        padding: 5px;
+        font-size: 1.3rem;
+        color: black;
+        border: 0px;
+        font-family: $titleFont;
+        @if map-has-key($props, "radius") {
+          border-radius: map-get($props, "radius");
+        }
+        background-color: none;
+        @if map-has-key($props, "border-color") {
+          border-color: map-get($props, "border-color");
+        }
+        @if map-has-key($props, "height") {
+          height: map-get($props, "height");
+        }
+      }
+      select {
+        width: 100%;
+        height: 60px;
+        background-color: none;
+        border: 1px solid;
+        color: black;
+        @if map-has-key($props, "color") {
+          border-color: map-get($props, "color");
+        }
+        @if map-has-key($props, "height") {
+          height: map-get($props, "height");
+        }
+      }
+      textarea {
+        width: 100%;
+        height: 120px;
+        background-color: none;
+        border: 1px solid;
+        color: black;
+        @if map-has-key($props, "color") {
+          border-color: map-get($props, "color");
+        }
+        @if map-has-key($props, "height") {
+          height: map-get($props, "height");
+        }
+      }
+    }
+    .form-controller.dark {
+      label {
+        color: white;
+      }
+      .form-container {
+        background-color: $formdarkColorBackground;
+        input {
+          background-color: $formdarkColorBackground;
+          color: white;
+        }
+
+        textarea {
+          color: white;
+          background-color: $formdarkColorBackground;
+        }
+      }
+    }
+  }
+}
+
+@mixin button {
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    position: relative;
+    background-color: $buttonColor;
+    border: 0;
+    color: white;
+    width: 100%;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 12px 30px;
+    font-weight: bold;
+    border-radius: 44px;
+    cursor: pointer;
+    font-family: $titleFont;
+    transition: all 300ms ease;
+  }
+  button:hover {
+    transform: scale(1.02);
+    //background-color: $buttonOnHoverColor;
+  }
+
+  @media screen and (max-width: 900px) {
+    button {
+      font-size: 20px;
+    }
+  }
+}
+
+@mixin subtitle() {
+  h2 {
+    font-family: "Varela Round", sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+  }
+  h2.dark {
+    color: white;
+  }
+}
+
+@mixin paragraph() {
+  p {
+    font-family: $titleFont;
+    font-size: 2rem;
+    word-break: normal;
+    text-align: center;
+  }
+  p.dark {
+    color: white;
+  }
+  @media screen and (max-width: 900px) {
+    p {
+      font-size: 1.8rem;
+    }
+  }
+}
