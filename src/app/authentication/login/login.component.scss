@@ -1,0 +1,38 @@
+@import "src/assets/styles/styles.scss";
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color: $mainBackgroundColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .login-card{
+        @include title();
+        @include button();
+        @include form-controller(
+      (
+        Properties: (
+          border-color: rgb(195, 21, 21),
+          height: 30px,
+          radius: 40px,
+        ),
+      )
+    );
+    h1{
+        margin: 0;
+    }
+        padding: 15px;
+        width: 25%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: flex-start;
+        background-color: white;
+        border-radius: 44px;
+        form{
+            width: auto;
+        }
+    }
+}

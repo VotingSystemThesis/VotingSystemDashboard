@@ -1,0 +1,13 @@
+@import "src/assets/styles/styles.scss";
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    background: $mainBackgroundColor;
+    @include title();
+    @include paragraph();
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

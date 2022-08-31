@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="login-card mat-elevation-z8">
+    <h1>Login</h1>
+    <form>
+      <div class="form-controller">
+        <label>Usuario</label>
+        <div class="form-container">
+          <input id="email" placeholder="Ingrese su usuario" type="text" />
+          <mat-icon>email</mat-icon>
+        </div>
+      </div>
+      <div class="form-controller">
+        <label>Contraseña</label>
+        <div class="form-container">
+          <input
+            id="password"
+            placeholder="Ingrese su Contraseña"
+            type="password"
+          />
+          <mat-icon>password</mat-icon>
+        </div>
+      </div>
+      <button [routerLink]="['/home']">Iniciar Sesion</button>
+    </form>
+  </div>
+</div>
