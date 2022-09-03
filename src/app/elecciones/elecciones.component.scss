@@ -7,6 +7,7 @@
     padding: 6%;
     @include title();
     @include paragraph();
+    @include button();
     h1,p{
         margin: 0;
     }
@@ -14,6 +15,36 @@
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
+    .main-title{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .title{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .actions{
+            display: flex;
+            align-content: center;
+            justify-content: center;
+        }
+    }
+    .content{
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        overflow: hidden;
+    }
+    .title{
+        display: flex;
+        align-items:center;
+        justify-content: space-between;
+        button{
+            width: 10vw;
+        }
+
+    }
     .actives{
         width: 100%;
         margin-bottom: 20px;
@@ -28,7 +59,10 @@
        }
        .content{
         width: 100%;
-        height: 100vh;
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background-color: $secondBackgroundColor;
        }
     }
@@ -45,9 +79,12 @@
             border-radius: 44px;
            }
            .content{
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 100%;
-        height: 100vh;
-        background-color: $secondBackgroundColor;
+            height: 50vh;
+            background-color: $secondBackgroundColor;
            }
     }
 }

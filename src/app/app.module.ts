@@ -12,9 +12,11 @@ import { EleccionesComponent } from './elecciones/elecciones.component';
 import { VotantesComponent } from './votantes/votantes.component';
 import { CandidatosComponent } from './candidatos/candidatos.component';
 import { EstadisticasComponent } from './estadisticas/estadisticas.component';
+import { EleccionesCardComponent } from './elecciones/elecciones-card/elecciones-card.component';
+import { VotanteCardComponent } from './votantes/votante-card/votante-card.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, NavComponent, EleccionesComponent, VotantesComponent, CandidatosComponent, EstadisticasComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, NavComponent, EleccionesComponent, VotantesComponent, CandidatosComponent, EstadisticasComponent, EleccionesCardComponent, VotanteCardComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,15 +1,37 @@
 <app-nav [isHide]="hideNav"></app-nav>
 <div class="container">
-  <h1>Elecciones</h1>
-  <p>Gestión de las elecciones</p>
+  <div class="main-title">
+    <div class="title">
+      <h1>Elecciones</h1>
+      <p>Gestión de las elecciones</p>
+    </div>
+    <div class="action">
+      <button>
+        Crear Eleccion
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
   <div class="actives">
     <div class="title">
       <h1>Elecciones Activas</h1>
+      <button>Ver todas</button>
     </div>
-    <div class="content">TU VIEJITA</div>
+    <div class="content">
+      <app-elecciones-card
+        *ngFor="let eleccion of eleccionesActivas"
+      ></app-elecciones-card>
+    </div>
   </div>
   <div class="not-actives">
-    <div class="title"><h1>Elecciones Pasadas</h1></div>
-    <div class="content">TU VIEJITA</div>
+    <div class="title">
+      <h1>Elecciones Pasadas</h1>
+      <button>Ver todas</button>
+    </div>
+    <div class="content">
+      <app-elecciones-card
+        *ngFor="let eleccion of eleccionesPasadas"
+      ></app-elecciones-card>
+    </div>
   </div>
 </div>
