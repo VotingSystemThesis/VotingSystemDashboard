@@ -1,4 +1,5 @@
 <app-nav [isHide]="hideNav"></app-nav>
+<router-outlet></router-outlet>
 <div class="container">
   <div class="main-title">
     <div class="title">
@@ -6,7 +7,7 @@
       <p>Gestión de los candidatos</p>
     </div>
     <div class="action">
-      <button>
+      <button routerLink="/candidatos/create">
         Crear Candidato
         <mat-icon>add</mat-icon>
       </button>

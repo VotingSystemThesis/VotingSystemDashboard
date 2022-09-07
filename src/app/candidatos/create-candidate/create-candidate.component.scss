@@ -1,0 +1,69 @@
+@import "src/assets/styles/styles.scss";
+.testing {
+  width: 100vw;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  background-color: black;
+  opacity: 0.4;
+}
+.container {
+  position: absolute;
+  top: 50%; /* position the top  edge of the element at the middle of the parent */
+  left: 50%; /* position the left edge of the element at the middle of the parent */
+  @include button();
+  @include title();
+  h1 {
+    font-size: 1.5rem;
+  }
+  h1,
+  button {
+    margin-top: 10px;
+  }
+  @include form-controller(
+    (
+      Properties: (
+        border-color: rgb(195, 21, 21),
+        height: 25px,
+        radius: 40px,
+      ),
+    )
+  );
+
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 30vw;
+  height: auto;
+  z-index: 5;
+  .header {
+    right: 0;
+    top: 10;
+    width: 100%;
+    position: fixed;
+    height: 10%;
+    display: flex;
+    justify-content: flex-end;
+    button {
+      width: 50px;
+      padding: 0;
+    }
+  }
+  .content {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    form {
+      .form-controller {
+        margin-bottom: 5px;
+      }
+      width: 90%;
+    }
+  }
+}

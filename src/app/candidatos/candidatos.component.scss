@@ -5,7 +5,7 @@
   min-height: 100vh;
   height: auto;
   background: $mainBackgroundColor;
-  padding: 6%;
+  padding: 8% 5%;
   @include title();
   @include paragraph();
   @include button();

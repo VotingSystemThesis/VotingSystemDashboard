@@ -1,0 +1,65 @@
+<div class="testing" [routerLink]="'/candidatos'"></div>
+<div class="container mat-elevation-z8">
+  <div class="header">
+    <button [routerLink]="'/candidatos'">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="content">
+    <form>
+      <h1>Registrar Candidato</h1>
+      <div class="form-controller">
+        <label>Nombre</label>
+        <div class="form-container">
+          <input id="email" placeholder="Ingrese su nombre" type="text" />
+          <mat-icon>person</mat-icon>
+        </div>
+      </div>
+      <div class="form-controller">
+        <label>Apellido</label>
+        <div class="form-container">
+          <input id="email" placeholder="Ingrese su apellido" type="text" />
+          <mat-icon>person</mat-icon>
+        </div>
+      </div>
+      <div class="form-controller">
+        <label>Correo Electrónico</label>
+        <div class="form-container">
+          <input
+            id="email"
+            placeholder="Ingrese su correo electrónico"
+            type="email"
+          />
+          <mat-icon>mail</mat-icon>
+        </div>
+      </div>
+      <div class="form-controller">
+        <label>DNI</label>
+        <div class="form-container">
+          <input id="email" placeholder="Ingrese su DNI" type="text" />
+          <mat-icon>badge</mat-icon>
+        </div>
+      </div>
+
+      <div class="form-controller">
+        <label>Fecha de Nacimiento</label>
+        <div class="form-container">
+          <input
+            id="password"
+            placeholder="Ingrese su Contraseña"
+            type="date"
+          />
+        </div>
+      </div>
+      <div class="form-controller">
+        <label>Partido Politico</label>
+        <div class="form-container">
+          <select>
+            <option value="Test">Testing</option>
+          </select>
+        </div>
+      </div>
+      <button>Registrar Candidato</button>
+    </form>
+  </div>
+</div>
