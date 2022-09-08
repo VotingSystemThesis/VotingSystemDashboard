@@ -10,7 +10,10 @@ export class CandidatoCardComponent implements OnInit {
   @Input() candidato: Candidato = new Candidato(
     'Test',
     'Apellido',
-    'Fuerza Popular'
+    'Fuerza Popular',
+    'testingemail@test.com',
+    '71234312',
+    new Date()
   );
   constructor() {}
 
