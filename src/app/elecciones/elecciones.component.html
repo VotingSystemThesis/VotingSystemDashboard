@@ -1,5 +1,6 @@
 <app-nav [isHide]="hideNav"></app-nav>
 <div class="container">
+  <router-outlet></router-outlet>
   <div class="main-title">
     <div class="title">
       <h1>Elecciones</h1>
@@ -15,7 +16,7 @@
   <div class="actives">
     <div class="title">
       <h1>Elecciones Activas</h1>
-      <button>Ver todas</button>
+      <button routerLink="/elecciones/full-actives">Ver todas</button>
     </div>
     <div class="content">
       <app-elecciones-card
