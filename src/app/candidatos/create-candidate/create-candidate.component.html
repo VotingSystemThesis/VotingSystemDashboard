@@ -6,18 +6,26 @@
     </button>
   </div>
   <div class="content">
-    <form>
+    <form [formGroup]="candidateForm">
       <div class="form-controller">
         <label>Nombre</label>
         <div class="form-container">
-          <input id="email" placeholder="Ingrese su nombre" type="text" />
+          <input
+            formControlName="name"
+            placeholder="Ingrese su nombre"
+            type="text"
+          />
           <mat-icon>person</mat-icon>
         </div>
       </div>
       <div class="form-controller">
         <label>Apellido</label>
         <div class="form-container">
-          <input id="email" placeholder="Ingrese su apellido" type="text" />
+          <input
+            formControlName="lastname"
+            placeholder="Ingrese su apellido"
+            type="text"
+          />
           <mat-icon>person</mat-icon>
         </div>
       </div>
@@ -25,7 +33,7 @@
         <label>Correo Electrónico</label>
         <div class="form-container">
           <input
-            id="email"
+            formControlName="email"
             placeholder="Ingrese su correo electrónico"
             type="email"
           />
@@ -35,7 +43,11 @@
       <div class="form-controller">
         <label>DNI</label>
         <div class="form-container">
-          <input id="email" placeholder="Ingrese su DNI" type="text" />
+          <input
+            formControlName="dni"
+            placeholder="Ingrese su DNI"
+            type="text"
+          />
           <mat-icon>badge</mat-icon>
         </div>
       </div>
@@ -43,11 +55,7 @@
       <div class="form-controller">
         <label>Fecha de Nacimiento</label>
         <div class="form-container">
-          <input
-            id="password"
-            placeholder="Ingrese su Contraseña"
-            type="date"
-          />
+          <input formControlName="dateBirth" type="date" />
         </div>
       </div>
       <div class="form-controller">

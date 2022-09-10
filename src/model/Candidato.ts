@@ -1,17 +1,17 @@
 export class Candidato {
-  nombre: String;
-  apellido: String;
-  partido: String;
-  email: String;
-  dni: String;
+  nombre: string;
+  apellido: string;
+  partido: string;
+  email: string;
+  dni: string;
   fechaNacimiento: Date;
 
   constructor(
-    nombre: String,
-    apellido: String,
+    nombre: string,
+    apellido: string,
     partido: string,
-    email: String,
-    dni: String,
+    email: string,
+    dni: string,
     fechanacimiento: Date
   ) {
     this.nombre = nombre;

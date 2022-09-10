@@ -1,5 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Candidato } from 'src/model/Candidato';
+
+import { CreateCandidateComponent } from '../create-candidate/create-candidate.component';
 
 @Component({
   selector: 'app-candidato-card',
@@ -15,7 +18,17 @@ export class CandidatoCardComponent implements OnInit {
     '71234312',
     new Date()
   );
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
+
+  openEdit() {
+    const dialogRef = this.dialog.open(CreateCandidateComponent, {
+      width: '50vw',
+      height: '90vh',
+      data: {
+        personToEdit: this.candidato,
+      },
+    });
+  }
 }

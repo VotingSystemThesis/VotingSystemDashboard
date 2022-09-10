@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { formatDate } from '@angular/common';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Candidato } from 'src/model/Candidato';
 
 @Component({
   selector: 'app-create-candidate',
@@ -7,10 +10,48 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./create-candidate.component.scss'],
 })
 export class CreateCandidateComponent implements OnInit {
-  constructor(public dialogRef: MatDialogRef<CreateCandidateComponent>) {}
+  constructor(
+    public dialogRef: MatDialogRef<CreateCandidateComponent>,
+    @Inject(MAT_DIALOG_DATA) public data?: any
+  ) {}
 
-  ngOnInit(): void {}
+  candidate: Candidato = new Candidato('', '', '', '', '', new Date());
+  candidateForm = new FormGroup({
+    name: new FormControl(' ', Validators.required),
+    lastname: new FormControl(' ', Validators.required),
+    dni: new FormControl('', Validators.maxLength(8)),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    dateBirth: new FormControl('', [Validators.required]),
+  });
+  ngOnInit(): void {
+    if (this.data != null) {
+      this.candidate = this.data.personToEdit;
+      this.initializeFormToEdit();
+      console.log(this.candidate);
+    } else {
+      this.candidateForm.reset();
+    }
+  }
+  initializeFormToEdit() {
+    this.candidateForm.patchValue({
+      name: this.candidate.nombre,
+      lastname: this.candidate.apellido,
+      dni: this.candidate.dni,
+      email: this.candidate.email,
+      dateBirth: formatDate(this.candidate.fechaNacimiento, 'yyyy-MM-dd', 'en'),
+    });
+  }
 
+  formateDate(date: Date): string {
+    var day = date.getDay().toString();
+    var month = date.getMonth().toString();
+    var year = date.getFullYear().toString();
+
+    day = day.length == 1 ? '0' + day : day;
+    month = month.length == 1 ? '0' + month : month;
+
+    return [day, month, year].join('/');
+  }
   closeDialog() {
     this.dialogRef.close();
   }

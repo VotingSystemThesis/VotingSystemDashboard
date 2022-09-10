@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './authentication/login/login.component';
@@ -19,7 +19,11 @@ import { CandidatoCardComponent } from './candidatos/candidato-card/candidato-ca
 import { CreateCandidateComponent } from './candidatos/create-candidate/create-candidate.component';
 import { FullactivesComponent } from './elecciones/fullactives/fullactives.component';
 import { FullnoactivesComponent } from './elecciones/fullnoactives/fullnoactives.component';
-
+const shortDatePatterns = {
+  'aa-DJ': 'dd/MM/yyyy',
+  'aa-ER': 'dd/MM/yyyy',
+  'aa-ET': 'dd/MM/yyyy',
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +47,9 @@ import { FullnoactivesComponent } from './elecciones/fullnoactives/fullnoactives
     BrowserAnimationsModule,
     MatIconModule,
     MatDialogModule,
+    ReactiveFormsModule,
   ],
+
   providers: [],
   bootstrap: [AppComponent],
 })
