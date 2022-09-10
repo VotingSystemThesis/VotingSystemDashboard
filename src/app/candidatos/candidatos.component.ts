@@ -1,4 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateCandidateComponent } from './create-candidate/create-candidate.component';
 
 @Component({
   selector: 'app-candidatos',
@@ -6,7 +8,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styleUrls: ['./candidatos.component.scss'],
 })
 export class CandidatosComponent implements OnInit {
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
   scrollTop = 0;
   hideNav = false;
   ngOnInit(): void {}
@@ -19,5 +21,11 @@ export class CandidatosComponent implements OnInit {
     } else {
       this.hideNav = false;
     }
+  }
+  createCandidate() {
+    const dialogRef = this.dialog.open(CreateCandidateComponent, {
+      width: '50vw',
+      height: '90vh',
+    });
   }
 }

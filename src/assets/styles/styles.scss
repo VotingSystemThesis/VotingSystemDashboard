@@ -102,9 +102,12 @@ $cardColor: white;
       }
       select {
         width: 100%;
-        height: 60px;
+        font-family: $titleFont;
+        height: 70px;
+        font-size: 1.3rem;
         background-color: none;
         border: none;
+        font-weight: bold;
         color: black;
         @if map-has-key($props, "color") {
           border-color: map-get($props, "color");
@@ -112,7 +115,14 @@ $cardColor: white;
         @if map-has-key($props, "height") {
           height: map-get($props, "height");
         }
+        option {
+          font-size: 1.3rem;
+          font-family: $titleFont;
+          font-weight: bold;
+          background-color: rebeccapurple;
+        }
       }
+
       textarea {
         width: 100%;
         height: 120px;

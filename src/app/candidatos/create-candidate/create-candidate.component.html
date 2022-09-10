@@ -1,13 +1,12 @@
-<div class="testing" [routerLink]="'/candidatos'"></div>
-<div class="container mat-elevation-z8">
+<div class="container">
   <div class="header">
-    <button [routerLink]="'/candidatos'">
+    <h1>Registrar Candidato</h1>
+    <button (click)="closeDialog()">
       <mat-icon>close</mat-icon>
     </button>
   </div>
   <div class="content">
     <form>
-      <h1>Registrar Candidato</h1>
       <div class="form-controller">
         <label>Nombre</label>
         <div class="form-container">

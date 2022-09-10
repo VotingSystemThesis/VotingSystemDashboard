@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-fullnoactives',
   templateUrl: './fullnoactives.component.html',
-  styleUrls: ['./fullnoactives.component.scss']
+  styleUrls: ['./fullnoactives.component.scss'],
 })
 export class FullnoactivesComponent implements OnInit {
+  constructor(public dialogRef: MatDialogRef<FullnoactivesComponent>) {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  closeDialog() {
+    this.dialogRef.close();
   }
-
 }

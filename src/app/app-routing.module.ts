@@ -16,10 +16,6 @@ const routes: Routes = [
   {
     path: 'elecciones',
     component: EleccionesComponent,
-    children: [
-      { path: 'full-actives', component: FullactivesComponent },
-      { path: 'full-noactives', component: FullnoactivesComponent },
-    ],
   },
   { path: 'votantes', component: VotantesComponent },
   {

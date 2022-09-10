@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 import { HomeComponent } from './common/home/home.component';
 import { NavComponent } from './common/nav/nav.component';
 import { EleccionesComponent } from './elecciones/elecciones.component';
@@ -16,6 +17,8 @@ import { EleccionesCardComponent } from './elecciones/elecciones-card/elecciones
 import { VotanteCardComponent } from './votantes/votante-card/votante-card.component';
 import { CandidatoCardComponent } from './candidatos/candidato-card/candidato-card.component';
 import { CreateCandidateComponent } from './candidatos/create-candidate/create-candidate.component';
+import { FullactivesComponent } from './elecciones/fullactives/fullactives.component';
+import { FullnoactivesComponent } from './elecciones/fullnoactives/fullnoactives.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,8 @@ import { CreateCandidateComponent } from './candidatos/create-candidate/create-c
     EleccionesCardComponent,
     VotanteCardComponent,
     CandidatoCardComponent,
+    FullactivesComponent,
+    FullnoactivesComponent,
     CreateCandidateComponent,
   ],
   imports: [
@@ -37,6 +42,7 @@ import { CreateCandidateComponent } from './candidatos/create-candidate/create-c
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
