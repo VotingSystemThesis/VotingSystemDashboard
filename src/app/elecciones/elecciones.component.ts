@@ -12,10 +12,39 @@ import { FullnoactivesComponent } from './fullnoactives/fullnoactives.component'
 export class EleccionesComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
-  ngOnInit(): void {}
   scrollTop = 0;
   hideNav = false;
-  eleccionesActivas = [
+  elecciones = [
+    new Eleccion(
+      'TituloActivo',
+      'DescripcionDeEleccion',
+      '01/06/2012',
+      '05/06/2022'
+    ),
+    new Eleccion(
+      'TituloActivo',
+      'DescripcionDeEleccion',
+      '01/06/2012',
+      '05/06/2022'
+    ),
+    new Eleccion(
+      'TituloActivo',
+      'DescripcionDeEleccion',
+      '01/06/2012',
+      '05/06/2022'
+    ),
+    new Eleccion(
+      'TituloActivo',
+      'DescripcionDeEleccion',
+      '01/06/2012',
+      '05/06/2022'
+    ),
+    new Eleccion(
+      'TituloActivo',
+      'DescripcionDeEleccion',
+      '01/06/2012',
+      '05/06/2022'
+    ),
     new Eleccion(
       'TituloActivo',
       'DescripcionDeEleccion',
@@ -23,14 +52,9 @@ export class EleccionesComponent implements OnInit {
       '05/06/2022'
     ),
   ];
-  eleccionesPasadas = [
-    new Eleccion(
-      'TituloActivo',
-      'DescripcionDeEleccion',
-      '01/06/2012',
-      '05/06/2022'
-    ),
-  ];
+  eleccionesActivas: Eleccion[] = [];
+  eleccionesPasadas: Eleccion[] = [];
+
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(event: any) {
     const currentScroll = window.pageYOffset;
@@ -41,16 +65,24 @@ export class EleccionesComponent implements OnInit {
     }
   }
 
-  openFullActivesDialog() {
-    const dialogRef = this.dialog.open(FullactivesComponent, {
-      width: '80vw',
-      height: '80vh',
-    });
+  ngOnInit(): void {
+    this.eleccionesActivas = this.elecciones;
+    this.eleccionesPasadas = this.elecciones;
+    this.initializeElections();
   }
-  openFullNoActivesDialog() {
-    const dialogRef = this.dialog.open(FullnoactivesComponent, {
-      width: '80vw',
+
+  initializeElections() {
+    this.eleccionesActivas = this.eleccionesActivas.slice(0, 3);
+    this.eleccionesPasadas = this.eleccionesPasadas.slice(0, 3);
+  }
+
+  openFullActivesDialog(isActive: boolean) {
+    const dialogRef = this.dialog.open(FullactivesComponent, {
+      width: '100vw',
       height: '80vh',
+      data: {
+        elecciones: isActive ? this.eleccionesActivas : this.eleccionesPasadas,
+      },
     });
   }
 }

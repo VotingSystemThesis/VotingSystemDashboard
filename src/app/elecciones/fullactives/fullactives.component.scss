@@ -19,5 +19,9 @@
   .content {
     height: 85%;
     width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    grid-auto-rows: minmax(150px, auto);
   }
 }

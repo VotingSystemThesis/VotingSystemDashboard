@@ -15,7 +15,7 @@
   <div class="actives">
     <div class="title">
       <h1>Elecciones Activas</h1>
-      <button (click)="openFullActivesDialog()">Ver todas</button>
+      <button (click)="openFullActivesDialog(true)">Ver todas</button>
     </div>
     <div class="content">
       <app-elecciones-card
@@ -26,7 +26,7 @@
   <div class="not-actives">
     <div class="title">
       <h1>Elecciones Pasadas</h1>
-      <button (click)="openFullNoActivesDialog()">Ver todas</button>
+      <button (click)="openFullActivesDialog(false)">Ver todas</button>
     </div>
     <div class="content">
       <app-elecciones-card

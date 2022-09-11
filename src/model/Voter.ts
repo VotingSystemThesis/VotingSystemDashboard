@@ -1,10 +1,17 @@
 export class Votante {
-  nombre: String;
-  apellido: String;
-  dni: String;
+  nombre: string;
+  apellido: string;
+  dni: string;
+  email?: string;
+  gender?: string;
   voted: boolean;
+  birthDate?: Date;
+  isActive?: boolean;
+  group?: string;
+  city?: string;
+  state?: string;
 
-  constructor(nombre: String, apellido: String, dni: String, voted: any) {
+  constructor(nombre: string, apellido: string, dni: string, voted: any) {
     this.nombre = nombre;
     this.apellido = apellido;
     this.dni = dni;
