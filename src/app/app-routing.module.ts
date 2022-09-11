@@ -7,12 +7,15 @@ import { HomeComponent } from './common/home/home.component';
 import { EleccionesComponent } from './elecciones/elecciones.component';
 import { FullactivesComponent } from './elecciones/fullactives/fullactives.component';
 import { FullnoactivesComponent } from './elecciones/fullnoactives/fullnoactives.component';
+import { PartidosComponent } from './partidos/partidos.component';
 import { VotantesComponent } from './votantes/votantes.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'partidos', component: PartidosComponent },
+
   {
     path: 'elecciones',
     component: EleccionesComponent,

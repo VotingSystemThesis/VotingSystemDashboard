@@ -1,9 +1,14 @@
 <div class="container">
   <div class="header">
     <h1>Registrar Candidato</h1>
-    <button (click)="closeDialog()">
-      <mat-icon>close</mat-icon>
-    </button>
+    <div class="actions">
+      <button (click)="deleteCandidate()" *ngIf="candidate.nombre.length > 0">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button class="close" (click)="closeDialog()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
   </div>
   <div class="content">
     <form [formGroup]="candidateForm">

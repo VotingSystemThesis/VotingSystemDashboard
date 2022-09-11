@@ -1,0 +1,24 @@
+<app-nav [isHide]="hideNav"></app-nav>
+<router-outlet></router-outlet>
+<div class="container">
+  <div class="main-title">
+    <div class="title">
+      <h1>Partidos</h1>
+      <p>Gestión de los Partidos</p>
+    </div>
+    <div class="action">
+      <button (click)="createPartido()">
+        Crear Partido
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="Partidos">
+    <app-partido-card></app-partido-card>
+    <app-partido-card></app-partido-card>
+    <app-partido-card></app-partido-card>
+    <app-partido-card></app-partido-card>
+    <app-partido-card></app-partido-card>
+    <app-partido-card></app-partido-card>
+  </div>
+</div>

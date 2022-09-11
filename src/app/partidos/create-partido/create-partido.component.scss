@@ -5,6 +5,7 @@
   justify-content: center;
   @include button();
   @include title();
+  @include paragraph();
   padding: 0px 10px;
   h1 {
     font-size: 1.5rem;
@@ -55,6 +56,9 @@
     align-items: flex-start;
     justify-content: center;
     form {
+      mat-slide-toggle {
+        font-family: $titleFont;
+      }
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;

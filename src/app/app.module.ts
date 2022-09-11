@@ -19,6 +19,11 @@ import { CandidatoCardComponent } from './candidatos/candidato-card/candidato-ca
 import { CreateCandidateComponent } from './candidatos/create-candidate/create-candidate.component';
 import { FullactivesComponent } from './elecciones/fullactives/fullactives.component';
 import { FullnoactivesComponent } from './elecciones/fullnoactives/fullnoactives.component';
+import { PartidosComponent } from './partidos/partidos.component';
+import { PartidoCardComponent } from './partidos/partido-card/partido-card.component';
+import { CreatePartidoComponent } from './partidos/create-partido/create-partido.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 const shortDatePatterns = {
   'aa-DJ': 'dd/MM/yyyy',
   'aa-ER': 'dd/MM/yyyy',
@@ -40,6 +45,9 @@ const shortDatePatterns = {
     FullactivesComponent,
     FullnoactivesComponent,
     CreateCandidateComponent,
+    PartidosComponent,
+    PartidoCardComponent,
+    CreatePartidoComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +56,7 @@ const shortDatePatterns = {
     MatIconModule,
     MatDialogModule,
     ReactiveFormsModule,
+    MatSlideToggleModule,
   ],
 
   providers: [],

@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="header">
+    <h1>Registrar Partido</h1>
+    <div class="actions">
+      <button (click)="deletePartido()" *ngIf="partido.name.length > 0">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button class="close" (click)="closeDialog()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="content">
+    <form [formGroup]="partidoForm">
+      <div class="form-controller">
+        <label>Nombre</label>
+        <div class="form-container">
+          <input
+            formControlName="name"
+            placeholder="Ingrese el nombre del partido"
+            type="text"
+          />
+          <mat-icon>remember_me</mat-icon>
+        </div>
+      </div>
+      <div class="form-controller">
+        <label>Descripcion</label>
+        <div class="form-container">
+          <input
+            formControlName="description"
+            placeholder="Ingrese su apellido"
+            type="text"
+          />
+          <mat-icon>description</mat-icon>
+        </div>
+      </div>
+
+      <div class="form-controller">
+        <label>Estado</label>
+        <mat-slide-toggle
+          formControlName="status"
+          [color]="'primary'"
+          [checked]="this.partidoForm.get('status')?.value"
+        >
+          <p>
+            {{
+              this.partidoForm.get("status")?.value ? "Activo" : "Desactivado"
+            }}
+          </p>
+        </mat-slide-toggle>
+      </div>
+
+      <button>Registrar Partido</button>
+    </form>
+  </div>
+</div>

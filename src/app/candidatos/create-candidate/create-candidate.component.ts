@@ -52,6 +52,9 @@ export class CreateCandidateComponent implements OnInit {
 
     return [day, month, year].join('/');
   }
+  deleteCandidate() {
+    this.dialogRef.close();
+  }
   closeDialog() {
     this.dialogRef.close();
   }
