@@ -24,6 +24,7 @@ import { PartidoCardComponent } from './partidos/partido-card/partido-card.compo
 import { CreatePartidoComponent } from './partidos/create-partido/create-partido.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { HttpClientModule } from '@angular/common/http';
+import { CreateVotanteComponent } from './votantes/create-votante/create-votante.component';
 
 const shortDatePatterns = {
   'aa-DJ': 'dd/MM/yyyy',
@@ -49,6 +50,7 @@ const shortDatePatterns = {
     PartidosComponent,
     PartidoCardComponent,
     CreatePartidoComponent,
+    CreateVotanteComponent,
   ],
   imports: [
     BrowserModule,
