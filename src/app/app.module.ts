@@ -23,6 +23,7 @@ import { PartidosComponent } from './partidos/partidos.component';
 import { PartidoCardComponent } from './partidos/partido-card/partido-card.component';
 import { CreatePartidoComponent } from './partidos/create-partido/create-partido.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { HttpClientModule } from '@angular/common/http';
 
 const shortDatePatterns = {
   'aa-DJ': 'dd/MM/yyyy',
@@ -57,6 +58,7 @@ const shortDatePatterns = {
     MatDialogModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
+    HttpClientModule,
   ],
 
   providers: [],
