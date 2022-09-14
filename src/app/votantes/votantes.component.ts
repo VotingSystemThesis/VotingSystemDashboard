@@ -16,6 +16,7 @@ export class VotantesComponent implements OnInit {
       this.hideNav = false;
     }
   }
+  votantes: any[] = [];
 
   constructor(private VoterService: VoterService) {}
   scrollTop = 0;
@@ -25,7 +26,7 @@ export class VotantesComponent implements OnInit {
   }
   initialize() {
     this.VoterService.getAllVoters().subscribe((data: any) => {
-      console.log(data);
+      this.votantes = data;
     });
   }
 }

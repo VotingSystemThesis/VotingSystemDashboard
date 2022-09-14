@@ -3,6 +3,7 @@ export class Partido {
   description: string;
   creationDate: Date;
   status: boolean;
+  id?: string;
 
   constructor(
     name: string,

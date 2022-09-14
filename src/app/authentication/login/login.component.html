@@ -1,26 +1,51 @@
 <div class="container">
   <div class="login-card mat-elevation-z8">
     <h1>Login</h1>
-    <form>
+    <form [formGroup]="loginForm">
       <div class="form-controller">
         <label>Usuario</label>
         <div class="form-container">
-          <input id="email" placeholder="Ingrese su usuario" type="text" />
+          <input
+            id="email"
+            formControlName="user"
+            placeholder="Ingrese su usuario"
+            type="text"
+          />
           <mat-icon>email</mat-icon>
         </div>
+        <p
+          class="error"
+          *ngIf="
+            loginForm.get('user')?.errors &&
+            (loginForm.get('user')?.touched || loginForm.get('user')?.dirty)
+          "
+        >
+          Por favor, escriba su usuario
+        </p>
       </div>
       <div class="form-controller">
         <label>Contraseña</label>
         <div class="form-container">
           <input
+            formControlName="password"
             id="password"
             placeholder="Ingrese su Contraseña"
             type="password"
           />
           <mat-icon>password</mat-icon>
         </div>
+        <p
+          class="error"
+          *ngIf="
+            loginForm.get('password')?.errors &&
+            (loginForm.get('password')?.touched ||
+              loginForm.get('password')?.dirty)
+          "
+        >
+          Por favor, escriba su contraseña
+        </p>
       </div>
-      <button [routerLink]="['/home']">Iniciar Sesion</button>
+      <button (click)="login()">Iniciar Sesion</button>
     </form>
   </div>
 </div>

@@ -14,11 +14,12 @@
     </div>
   </div>
   <div class="Partidos">
-    <app-partido-card></app-partido-card>
-    <app-partido-card></app-partido-card>
-    <app-partido-card></app-partido-card>
-    <app-partido-card></app-partido-card>
-    <app-partido-card></app-partido-card>
-    <app-partido-card></app-partido-card>
+    <div class="noPartidos" *ngIf="partidos.length == 0">
+      <h1>No hay partidos disponibles</h1>
+    </div>
+    <app-partido-card
+      *ngFor="let partido of partidos"
+      [partido]="partido"
+    ></app-partido-card>
   </div>
 </div>

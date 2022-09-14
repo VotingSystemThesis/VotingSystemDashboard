@@ -1,5 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Partido } from 'src/model/Partido';
+import { Votante } from 'src/model/Voter';
+import { PoliticalpartyService } from '../services/politicalparty.service';
 import { CreatePartidoComponent } from './create-partido/create-partido.component';
 
 @Component({
@@ -8,10 +11,16 @@ import { CreatePartidoComponent } from './create-partido/create-partido.componen
   styleUrls: ['./partidos.component.scss'],
 })
 export class PartidosComponent implements OnInit {
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private polliticalPartyService: PoliticalpartyService
+  ) {}
   scrollTop = 0;
   hideNav = false;
-  ngOnInit(): void {}
+  partidos: Partido[] = [];
+  ngOnInit(): void {
+    this.initialize();
+  }
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(event: any) {
@@ -28,5 +37,12 @@ export class PartidosComponent implements OnInit {
       width: '30vw',
       height: '50vh',
     });
+  }
+  initialize() {
+    this.polliticalPartyService
+      .getAllPolliticalParty()
+      .subscribe((data: any) => {
+        this.partidos = data;
+      });
   }
 }

@@ -14,19 +14,11 @@
     </div>
   </div>
   <div class="candidatos">
-    <app-candidato-card></app-candidato-card>
-    <app-candidato-card></app-candidato-card>
-
-    <app-candidato-card></app-candidato-card>
-    <app-candidato-card></app-candidato-card>
-    <app-candidato-card></app-candidato-card>
-    <app-candidato-card></app-candidato-card>
-    <app-candidato-card></app-candidato-card>
-    <app-candidato-card></app-candidato-card>
-    <app-candidato-card></app-candidato-card>
-    <app-candidato-card></app-candidato-card>
-    <app-candidato-card></app-candidato-card>
-    <app-candidato-card></app-candidato-card>
-    <app-candidato-card></app-candidato-card>
+    <div class="nocandidatos" *ngIf="candidatos.length == 0">
+      <h1>No hay candidatos disponibles</h1>
+    </div>
+    <app-candidato-card
+      *ngFor="let candidato of candidatos"
+    ></app-candidato-card>
   </div>
 </div>

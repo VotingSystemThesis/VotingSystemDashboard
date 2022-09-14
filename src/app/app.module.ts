@@ -25,6 +25,7 @@ import { CreatePartidoComponent } from './partidos/create-partido/create-partido
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateVotanteComponent } from './votantes/create-votante/create-votante.component';
+import { AuthGuard } from './guards/auth/auth.guard';
 
 const shortDatePatterns = {
   'aa-DJ': 'dd/MM/yyyy',
@@ -63,7 +64,7 @@ const shortDatePatterns = {
     HttpClientModule,
   ],
 
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

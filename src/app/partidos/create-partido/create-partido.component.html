@@ -34,23 +34,15 @@
           <mat-icon>description</mat-icon>
         </div>
       </div>
-
       <div class="form-controller">
-        <label>Estado</label>
-        <mat-slide-toggle
-          formControlName="status"
-          [color]="'primary'"
-          [checked]="this.partidoForm.get('status')?.value"
-        >
-          <p>
-            {{
-              this.partidoForm.get("status")?.value ? "Activo" : "Desactivado"
-            }}
-          </p>
-        </mat-slide-toggle>
+        <label>Fecha de Creacion</label>
+        <div class="form-container">
+          <input formControlName="creationDate" type="date" />
+        </div>
       </div>
-
-      <button>Registrar Partido</button>
+      <button (click)="submitForm()">
+        {{ partido.name.length > 0 ? " Editar Partido" : "Registrar Partido" }}
+      </button>
     </form>
   </div>
 </div>

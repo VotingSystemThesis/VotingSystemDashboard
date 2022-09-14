@@ -42,16 +42,6 @@ export class CreateCandidateComponent implements OnInit {
     });
   }
 
-  formateDate(date: Date): string {
-    var day = date.getDay().toString();
-    var month = date.getMonth().toString();
-    var year = date.getFullYear().toString();
-
-    day = day.length == 1 ? '0' + day : day;
-    month = month.length == 1 ? '0' + month : month;
-
-    return [day, month, year].join('/');
-  }
   deleteCandidate() {
     this.dialogRef.close();
   }

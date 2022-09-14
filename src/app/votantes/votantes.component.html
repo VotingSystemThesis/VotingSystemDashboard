@@ -13,19 +13,9 @@
     </div>
   </div>
   <div class="votantes">
-    <app-votante-card></app-votante-card>
-    <app-votante-card></app-votante-card>
-
-    <app-votante-card></app-votante-card>
-    <app-votante-card></app-votante-card>
-    <app-votante-card></app-votante-card>
-    <app-votante-card></app-votante-card>
-    <app-votante-card></app-votante-card>
-    <app-votante-card></app-votante-card>
-    <app-votante-card></app-votante-card>
-    <app-votante-card></app-votante-card>
-    <app-votante-card></app-votante-card>
-    <app-votante-card></app-votante-card>
-    <app-votante-card></app-votante-card>
+    <div class="noVoters" *ngIf="votantes.length == 0">
+      <h1>No hay votantes disponibles</h1>
+    </div>
+    <app-votante-card *ngFor="let votante of votantes"></app-votante-card>
   </div>
 </div>

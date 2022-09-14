@@ -47,9 +47,10 @@ $cardColor: white;
       border-radius: 5px;
       p.error {
         color: red;
-        font-size: 10px;
-        margin-left: 20px;
+        font-size: 1rem;
+        margin: 0 0 0 20px;
         text-align: left;
+        font-family: $titleFont;
       }
       label {
         width: 100%;

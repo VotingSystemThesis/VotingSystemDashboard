@@ -14,4 +14,8 @@ export class CandidateService {
   getAllCandidates(): Observable<any> {
     return this.http.get(this.url.toString());
   }
+
+  createCandidate(body: any) {
+    return this.http.post(this.url, body);
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Candidato } from 'src/model/Candidato';
 import { CandidateService } from '../services/candidate.service';
 import { CreateCandidateComponent } from './create-candidate/create-candidate.component';
 
@@ -18,6 +19,7 @@ export class CandidatosComponent implements OnInit {
   ngOnInit(): void {
     this.initialize();
   }
+  candidatos: Candidato[] = [];
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(event: any) {
