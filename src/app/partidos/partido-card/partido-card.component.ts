@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Partido } from 'src/model/Partido';
 import { CreatePartidoComponent } from '../create-partido/create-partido.component';
@@ -15,17 +15,24 @@ export class PartidoCardComponent implements OnInit {
     new Date(),
     true
   );
+  @Output() resultEmitter = new EventEmitter();
   constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
   openEdit() {
-    const dialogRef = this.dialog.open(CreatePartidoComponent, {
-      width: '30vw',
-      height: '50vh',
-      data: {
-        partidoToEdit: this.partido,
-      },
-    });
+    const dialogRef = this.dialog
+      .open(CreatePartidoComponent, {
+        width: '30vw',
+        height: '50vh',
+        data: {
+          partidoToEdit: this.partido,
+        },
+      })
+      .afterClosed()
+      .subscribe((data: any) => {
+        console.log(data);
+        this.resultEmitter.emit();
+      });
   }
 }

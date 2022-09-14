@@ -15,7 +15,6 @@ export class CandidatoCardComponent implements OnInit {
     'Apellido',
     'Fuerza Popular',
     'testingemail@test.com',
-    '71234312',
     new Date()
   );
   constructor(public dialog: MatDialog) {}

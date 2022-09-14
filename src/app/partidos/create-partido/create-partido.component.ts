@@ -67,14 +67,14 @@ export class CreatePartidoComponent implements OnInit {
         this.polliticalPartyService
           .editPolliticalParty(bodyToSend, this.partido.id!)
           .subscribe((data: any) => {
-            console.log(data.status);
+            this.dialogRef.close(data);
           });
       } else {
         //Submit
         this.polliticalPartyService
           .createPolliticalParty(bodyToSend)
           .subscribe((data: any) => {
-            console.log(data);
+            this.dialogRef.close(data);
           });
       }
     } else {

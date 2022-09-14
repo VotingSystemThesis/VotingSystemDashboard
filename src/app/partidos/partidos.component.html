@@ -20,6 +20,7 @@
     <app-partido-card
       *ngFor="let partido of partidos"
       [partido]="partido"
+      (resultEmitter)="this.initialize()"
     ></app-partido-card>
   </div>
 </div>

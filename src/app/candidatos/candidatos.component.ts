@@ -31,14 +31,19 @@ export class CandidatosComponent implements OnInit {
     }
   }
   createCandidate() {
-    const dialogRef = this.dialog.open(CreateCandidateComponent, {
-      width: '50vw',
-      height: '90vh',
-    });
+    const dialogRef = this.dialog
+      .open(CreateCandidateComponent, {
+        width: '50vw',
+        height: '90vh',
+      })
+      .afterClosed()
+      .subscribe((response: any) => {
+        this.initialize();
+      });
   }
   initialize() {
     this.candidateService.getAllCandidates().subscribe((data: any) => {
-      console.log(data);
+      this.candidatos = data;
     });
   }
 }

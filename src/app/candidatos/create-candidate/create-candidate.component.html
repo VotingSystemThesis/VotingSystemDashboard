@@ -2,7 +2,7 @@
   <div class="header">
     <h1>Registrar Candidato</h1>
     <div class="actions">
-      <button (click)="deleteCandidate()" *ngIf="candidate.nombre.length > 0">
+      <button (click)="deleteCandidate()" *ngIf="candidate.name.length > 0">
         <mat-icon>delete</mat-icon>
       </button>
       <button class="close" (click)="closeDialog()">
@@ -35,6 +35,31 @@
         </div>
       </div>
       <div class="form-controller">
+        <label>Genero</label>
+        <div class="form-container">
+          <select formControlName="gender" (change)="updateFormGender($event)">
+            <option value="----" [selected]="true" [disabled]="true">
+              Seleccione su genero
+            </option>
+            <option value="true">Masculino</option>
+            <option value="false">Femenino</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-controller">
+        <label>Partido Politico</label>
+        <div class="form-container">
+          <select formControlName="politicalParty">
+            <option
+              *ngFor="let partido of polliticalParties"
+              [value]="partido.id"
+            >
+              {{ partido.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-controller">
         <label>Correo Electrónico</label>
         <div class="form-container">
           <input
@@ -63,15 +88,13 @@
           <input formControlName="dateBirth" type="date" />
         </div>
       </div>
-      <div class="form-controller">
-        <label>Partido Politico</label>
-        <div class="form-container">
-          <select>
-            <option value="Test">Testing</option>
-          </select>
-        </div>
-      </div>
-      <button>Registrar Candidato</button>
+      <button (click)="submitForm()">
+        {{
+          candidate.name.length > 0
+            ? " Editar Candidato"
+            : "Registrar Candidato"
+        }}
+      </button>
     </form>
   </div>
 </div>

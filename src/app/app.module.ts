@@ -1,6 +1,6 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './authentication/login/login.component';
@@ -58,6 +58,7 @@ const shortDatePatterns = {
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
+    FormsModule,
     MatDialogModule,
     ReactiveFormsModule,
     MatSlideToggleModule,

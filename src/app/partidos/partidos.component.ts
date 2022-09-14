@@ -33,10 +33,16 @@ export class PartidosComponent implements OnInit {
   }
 
   createPartido() {
-    const dialogRef = this.dialog.open(CreatePartidoComponent, {
-      width: '30vw',
-      height: '50vh',
-    });
+    const dialogRef = this.dialog
+      .open(CreatePartidoComponent, {
+        width: '30vw',
+        height: '50vh',
+      })
+      .afterClosed()
+      .subscribe((data: any) => {
+        console.log(data);
+        this.initialize();
+      });
   }
   initialize() {
     this.polliticalPartyService
