@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -7,6 +7,11 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class PoliticalpartyService {
+  corsHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+    'Access-Control-Allow-Origin': '*',
+  });
   constructor(private http: HttpClient) {}
   url = `${environment.hostUrl}/party`;
 
@@ -18,6 +23,8 @@ export class PoliticalpartyService {
     return this.http.post(this.url, body);
   }
   editPolliticalParty(body: any, id: string) {
-    return this.http.put(`${this.url}/${id}`, body);
+    return this.http.put(`${this.url}/${id}`, body, {
+      headers: this.corsHeaders,
+    });
   }
 }
