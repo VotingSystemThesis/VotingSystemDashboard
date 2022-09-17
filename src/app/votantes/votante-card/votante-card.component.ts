@@ -7,12 +7,7 @@ import { Votante } from 'src/model/Voter';
   styleUrls: ['./votante-card.component.scss'],
 })
 export class VotanteCardComponent implements OnInit {
-  @Input() votante: Votante = new Votante(
-    'Pedrito',
-    'Perez',
-    '12345678',
-    undefined
-  );
+  @Input() votante: Votante = new Votante('Pedrito', 'Perez', '12345678');
   constructor() {}
 
   ngOnInit(): void {}

@@ -15,4 +15,7 @@ export class VoterService {
   getAllVoters(): Observable<any> {
     return this.http.get(this.url.toString());
   }
+  createVoter(body: any) {
+    return this.http.post(this.url, body);
+  }
 }

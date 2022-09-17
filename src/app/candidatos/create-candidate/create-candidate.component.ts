@@ -1,4 +1,4 @@
-import { formatDate } from '@angular/common';
+import { DatePipe, formatDate } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -17,6 +17,7 @@ export class CreateCandidateComponent implements OnInit {
     public dialogRef: MatDialogRef<CreateCandidateComponent>,
     private partidoService: PoliticalpartyService,
     private candidateService: CandidateService,
+    private datePipe: DatePipe,
     @Inject(MAT_DIALOG_DATA) public data?: any
   ) {}
   isNew = true;
@@ -76,11 +77,8 @@ export class CreateCandidateComponent implements OnInit {
 
   submitForm() {
     if (this.candidateForm.valid) {
-      var newDate = this.candidateForm
-        .get('dateBirth')
-        ?.value?.split('-')
-        .reverse()
-        .join('-');
+      var newDate = this.candidateForm.get('dateBirth')?.value;
+      newDate = this.datePipe.transform(newDate, 'dd-MM-yyyy');
       let politicalPartyBody = {
         id: this.politicalparty?.id,
         name: this.politicalparty?.name,

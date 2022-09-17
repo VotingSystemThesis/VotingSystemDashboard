@@ -6,7 +6,7 @@
       <p>Gestión de los votantes</p>
     </div>
     <div class="action">
-      <button>
+      <button (click)="createVoter()">
         Crear Votante
         <mat-icon>add</mat-icon>
       </button>
@@ -16,6 +16,9 @@
     <div class="noVoters" *ngIf="votantes.length == 0">
       <h1>No hay votantes disponibles</h1>
     </div>
-    <app-votante-card *ngFor="let votante of votantes"></app-votante-card>
+    <app-votante-card
+      *ngFor="let votante of votantes"
+      [votante]="votante"
+    ></app-votante-card>
   </div>
 </div>

@@ -1,1 +1,112 @@
-<p>create-votante works!</p>
+<div class="container">
+  <div class="header">
+    <h1>Registrar Votante</h1>
+    <div class="actions">
+      <button (click)="deleteVoter()" *ngIf="voter.name.length > 0">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button class="close" (click)="closeDialog()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="content">
+    <form [formGroup]="votanteForm">
+      <div class="first-part-container">
+        <div class="form-controller">
+          <label>Nombre</label>
+          <div class="form-container">
+            <input
+              formControlName="name"
+              placeholder="Ingrese su nombre"
+              type="text"
+            />
+            <mat-icon>person</mat-icon>
+          </div>
+        </div>
+        <div class="form-controller">
+          <label>Apellido</label>
+          <div class="form-container">
+            <input
+              formControlName="lastname"
+              placeholder="Ingrese su apellido"
+              type="text"
+            />
+            <mat-icon>person</mat-icon>
+          </div>
+        </div>
+        <div class="form-controller">
+          <label>Genero</label>
+          <div class="form-container">
+            <select
+              formControlName="gender"
+              (change)="updateFormGender($event)"
+            >
+              <option
+                value="----"
+                [selected]="true"
+                [disabled]="true"
+                *ngIf="voter.name.length == 0"
+              >
+                Seleccione su genero
+              </option>
+              <option value="true">Masculino</option>
+              <option value="false">Femenino</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-controller">
+          <label>Correo Electrónico</label>
+          <div class="form-container">
+            <input
+              formControlName="email"
+              placeholder="Ingrese su correo electrónico"
+              type="email"
+            />
+            <mat-icon>mail</mat-icon>
+          </div>
+        </div>
+        <div class="form-controller">
+          <label>DNI</label>
+          <div class="form-container">
+            <input
+              formControlName="dni"
+              placeholder="Ingrese su DNI"
+              type="text"
+            />
+            <mat-icon>badge</mat-icon>
+          </div>
+        </div>
+      </div>
+      <div class="second-part-container">
+        <div class="form-controller">
+          <label>Fecha de Nacimiento</label>
+          <div class="form-container">
+            <input formControlName="birthDate" type="date" />
+          </div>
+        </div>
+        <div class="form-controller">
+          <label>Fecha de Emision</label>
+          <div class="form-container">
+            <input formControlName="emissionDate" type="date" />
+          </div>
+        </div>
+        <div class="form-controller">
+          <label>Ciudad</label>
+          <div class="form-container">
+            <input
+              formControlName="city"
+              placeholder="Ingrese su ciudad"
+              type="text"
+            />
+            <mat-icon>person</mat-icon>
+          </div>
+        </div>
+      </div>
+    </form>
+    <button (click)="submitForm()">
+      {{ voter.name.length > 0 ? " Editar Candidato" : "Registrar Candidato" }}
+    </button>
+  </div>
+</div>

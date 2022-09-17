@@ -1,4 +1,4 @@
-import { formatDate } from '@angular/common';
+import { DatePipe, formatDate } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -14,7 +14,7 @@ export class CreatePartidoComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<CreatePartidoComponent>,
     private polliticalPartyService: PoliticalpartyService,
-
+    private datePipe: DatePipe,
     @Inject(MAT_DIALOG_DATA) public data?: any
   ) {}
 
@@ -52,11 +52,9 @@ export class CreatePartidoComponent implements OnInit {
   }
   submitForm() {
     if (this.partidoForm.valid) {
-      var newDate = this.partidoForm
-        .get('creationDate')
-        ?.value?.split('-')
-        .reverse()
-        .join('-');
+      var newDate = this.partidoForm.get('creationDate')?.value;
+      newDate = this.datePipe.transform(newDate, 'dd-MM-yyyy');
+
       let bodyToSend = {
         name: this.partidoForm.get('name')?.value,
         description: this.partidoForm.get('description')?.value,

@@ -26,6 +26,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateVotanteComponent } from './votantes/create-votante/create-votante.component';
 import { AuthGuard } from './guards/auth/auth.guard';
+import { DatePipe } from '@angular/common';
 
 const shortDatePatterns = {
   'aa-DJ': 'dd/MM/yyyy',
@@ -65,7 +66,7 @@ const shortDatePatterns = {
     HttpClientModule,
   ],
 
-  providers: [AuthGuard],
+  providers: [AuthGuard, DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
