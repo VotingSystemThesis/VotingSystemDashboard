@@ -18,6 +18,7 @@
       <h1>No hay candidatos disponibles</h1>
     </div>
     <app-candidato-card
+      (resultEmitter)="this.initialize()"
       *ngFor="let candidato of candidatos"
       [candidato]="candidato"
     ></app-candidato-card>

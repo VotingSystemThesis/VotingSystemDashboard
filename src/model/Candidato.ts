@@ -1,13 +1,14 @@
 import { Partido } from './Partido';
 
 export class Candidato {
+  id?: string;
   name: string;
   lastName: string;
-  partido?: Partido;
+  politicalParty?: Partido;
   email: string;
   gender?: boolean;
   dni: string;
-  fechaNacimiento: Date;
+  birthDate: Date;
 
   constructor(
     nombre: string,
@@ -20,6 +21,6 @@ export class Candidato {
     this.lastName = apellido;
     this.email = email;
     this.dni = dni;
-    this.fechaNacimiento = fechanacimiento;
+    this.birthDate = fechanacimiento;
   }
 }

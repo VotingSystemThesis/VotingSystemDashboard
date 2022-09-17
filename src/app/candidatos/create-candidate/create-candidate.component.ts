@@ -47,26 +47,30 @@ export class CreateCandidateComponent implements OnInit {
   initializePoliticalParty() {
     this.candidateForm.get('politicalParty')?.valueChanges.subscribe((data) => {
       this.politicalparty = this.polliticalParties.find((x) => x.id == data);
-      console.log(this.politicalparty);
     });
   }
   initializeFormToEdit() {
+    var date = this.candidate.birthDate.toString();
+    var newdate = date.split('-').reverse().join('-');
     this.candidateForm.patchValue({
       name: this.candidate.name,
       lastname: this.candidate.lastName,
       dni: this.candidate.dni,
       email: this.candidate.email,
+      politicalParty: this.candidate.politicalParty?.id,
       gender: this.candidate.gender,
-      dateBirth: formatDate(this.candidate.fechaNacimiento, 'yyyy-MM-dd', 'en'),
+      dateBirth: formatDate(newdate, 'yyyy-MM-dd', 'en'),
     });
+    console.log(this.candidateForm);
   }
 
-  updateFormGender(event: any) {
-    this.candidateForm.get('gender')?.setValue(event.target.value);
+  updateFormGender(event: any, isNew = true) {
+    if (isNew) this.candidateForm.get('gender')?.setValue(event.target.value);
+    else {
+      this.candidateForm.get('gender')?.setValue(event);
+    }
   }
-  updateFormPoliticalParty(event: any) {
-    console.log(event.target.value);
-  }
+
   submitForm() {
     if (this.candidateForm.valid) {
       var newDate = this.candidateForm
@@ -92,9 +96,19 @@ export class CreateCandidateComponent implements OnInit {
         birthDate: newDate,
         politicalParty: politicalPartyBody,
       };
-      this.candidateService.createCandidate(body).subscribe((response: any) => {
-        this.dialogRef.close();
-      });
+      if (this.candidate.name.length > 0) {
+        this.candidateService
+          .createCandidate(body)
+          .subscribe((response: any) => {
+            this.dialogRef.close();
+          });
+      } else {
+        this.candidateService
+          .updateCandidate(body, this.candidate.id!)
+          .subscribe((response: any) => {
+            this.dialogRef.close();
+          });
+      }
     } else {
       console.log('Not Valid');
     }

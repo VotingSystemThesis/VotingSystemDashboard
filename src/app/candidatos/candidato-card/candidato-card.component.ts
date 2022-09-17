@@ -1,4 +1,11 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Inject,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Candidato } from 'src/model/Candidato';
 
@@ -17,17 +24,25 @@ export class CandidatoCardComponent implements OnInit {
     'testingemail@test.com',
     new Date()
   );
+  @Output() resultEmitter = new EventEmitter();
+
   constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
   openEdit() {
-    const dialogRef = this.dialog.open(CreateCandidateComponent, {
-      width: '50vw',
-      height: '90vh',
-      data: {
-        personToEdit: this.candidato,
-      },
-    });
+    const dialogRef = this.dialog
+      .open(CreateCandidateComponent, {
+        width: '50vw',
+        height: '90vh',
+        data: {
+          personToEdit: this.candidato,
+        },
+      })
+      .afterClosed()
+      .subscribe((data: any) => {
+        console.log(data);
+        this.resultEmitter.emit();
+      });
   }
 }

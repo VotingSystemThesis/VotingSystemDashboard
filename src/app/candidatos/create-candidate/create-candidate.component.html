@@ -38,7 +38,12 @@
         <label>Genero</label>
         <div class="form-container">
           <select formControlName="gender" (change)="updateFormGender($event)">
-            <option value="----" [selected]="true" [disabled]="true">
+            <option
+              value="----"
+              [selected]="true"
+              [disabled]="true"
+              *ngIf="candidate.name.length == 0"
+            >
               Seleccione su genero
             </option>
             <option value="true">Masculino</option>

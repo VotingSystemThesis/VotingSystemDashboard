@@ -18,4 +18,7 @@ export class CandidateService {
   createCandidate(body: any) {
     return this.http.post(this.url, body);
   }
+  updateCandidate(body: any, id: string) {
+    return this.http.put(`${this.url}/${id}`, body);
+  }
 }
