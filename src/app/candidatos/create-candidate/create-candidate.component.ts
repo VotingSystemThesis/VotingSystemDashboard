@@ -19,6 +19,7 @@ export class CreateCandidateComponent implements OnInit {
     private candidateService: CandidateService,
     @Inject(MAT_DIALOG_DATA) public data?: any
   ) {}
+  isNew = true;
   polliticalParties: Partido[] = [];
   politicalparty? = new Partido('', '', new Date(), false);
   candidate: Candidato = new Candidato('', '', '', '', new Date());
@@ -35,6 +36,7 @@ export class CreateCandidateComponent implements OnInit {
     if (this.data != null) {
       this.candidate = this.data.personToEdit;
       this.initializeFormToEdit();
+      this.isNew = false;
     } else {
       this.candidateForm.reset();
     }
@@ -52,6 +54,7 @@ export class CreateCandidateComponent implements OnInit {
   initializeFormToEdit() {
     var date = this.candidate.birthDate.toString();
     var newdate = date.split('-').reverse().join('-');
+    console.log(this.candidate.politicalParty);
     this.candidateForm.patchValue({
       name: this.candidate.name,
       lastname: this.candidate.lastName,
@@ -96,7 +99,7 @@ export class CreateCandidateComponent implements OnInit {
         birthDate: newDate,
         politicalParty: politicalPartyBody,
       };
-      if (this.candidate.name.length > 0) {
+      if (this.isNew) {
         this.candidateService
           .createCandidate(body)
           .subscribe((response: any) => {
