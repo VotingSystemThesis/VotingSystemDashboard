@@ -2,6 +2,7 @@
   <h1>{{ votante.name }}</h1>
   <h1>{{ votante.lastName }}</h1>
   <p>{{ votante.dni }}</p>
+  <button *ngIf="!hasFingerprinrt">Registrar Huella</button>
   <div class="voted" *ngIf="votante.voted != undefined">
     <p>Ha votado:</p>
     <h1>{{ votante.voted ? "Si" : "No" }}</h1>

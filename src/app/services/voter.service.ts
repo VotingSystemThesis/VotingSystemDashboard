@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, retry, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Votante } from 'src/model/Voter';
 
@@ -17,5 +17,23 @@ export class VoterService {
   }
   createVoter(body: any) {
     return this.http.post(this.url, body);
+  }
+  validateFingerprint(fingerUrl: string) {
+    return this.http.get(fingerUrl);
+  }
+
+  handleError(error: any) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // client-side error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(() => {
+      return errorMessage;
+    });
   }
 }

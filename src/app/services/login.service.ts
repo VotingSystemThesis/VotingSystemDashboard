@@ -19,10 +19,8 @@ export class LoginService {
     return this.isAuth;
   }
   handleToken(token: string) {
-    if (localStorage.getItem('token') == null) {
-      localStorage.setItem('token', token);
-      this.isAuth = true;
-      this.router.navigate(['/home']);
-    }
+    localStorage.setItem('token', token);
+    this.isAuth = true;
+    this.router.navigate(['/home']);
   }
 }

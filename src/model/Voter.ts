@@ -8,7 +8,7 @@ export class Votante {
   birthDate?: Date;
   emissionDate?: Date;
   isActive?: boolean;
-  fingerprint?: string;
+  fingerPrint?: string;
   city?: string;
   group?: string;
 
