@@ -71,6 +71,7 @@ export class CreateVotanteComponent implements OnInit {
         city: this.votanteForm.get('city')?.value,
       };
       if (this.isNew) {
+        console.log(body);
         //      this.voterService.createVoter(body).subscribe((data: any) => {
         //      console.log(data);
         //  this.closeDialog();

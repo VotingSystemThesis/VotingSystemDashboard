@@ -22,12 +22,11 @@ export class LoginComponent implements OnInit {
         username: this.loginForm.get('user')?.value,
         password: this.loginForm.get('password')?.value,
       };
+      console.log(bodyToSend);
       this.loginService.authenticate(bodyToSend).subscribe((data: any) => {
-        console.log(data);
+        this.loginService.handleToken(data.token);
       });
     } else {
-      console.log('adfa');
-      this.router.navigate(['/home']);
     }
   }
 }
