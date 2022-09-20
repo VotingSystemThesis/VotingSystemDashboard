@@ -16,18 +16,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'partidos', component: PartidosComponent, canActivate: [AuthGuard] },
-
-  {
-    path: 'elecciones',
-    component: EleccionesComponent,
-    canActivate: [AuthGuard],
-  },
+  { path: 'elecciones', component: EleccionesComponent, canActivate: [AuthGuard] },
   { path: 'votantes', component: VotantesComponent, canActivate: [AuthGuard] },
-  {
-    path: 'candidatos',
-    canActivate: [AuthGuard],
-    component: CandidatosComponent,
-  },
+  { path: 'candidatos', canActivate: [AuthGuard],  component: CandidatosComponent },
 ];
 
 @NgModule({

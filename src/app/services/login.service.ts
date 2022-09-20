@@ -23,4 +23,7 @@ export class LoginService {
     this.isAuth = true;
     this.router.navigate(['/home']);
   }
+  getToken(){
+    return localStorage.getItem('token');
+  }
 }

@@ -4,16 +4,33 @@ import { MatDialog } from '@angular/material/dialog';
 import { Eleccion } from 'src/model/Eleccion';
 import { FullactivesComponent } from './fullactives/fullactives.component';
 import { FullnoactivesComponent } from './fullnoactives/fullnoactives.component';
+import {VoterService} from "../services/voter.service";
+import {ElectoralvotingService} from "../services/electoralvoting.service";
+import {EleccionVoting} from "../../model/EleccionVoting";
 @Component({
   selector: 'app-elecciones',
   templateUrl: './elecciones.component.html',
   styleUrls: ['./elecciones.component.scss'],
 })
 export class EleccionesComponent implements OnInit {
-  constructor(public dialog: MatDialog) {}
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(event: any) {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > 50) {
+      this.hideNav = true;
+    } else {
+      this.hideNav = false;
+    }
+  }
+
+  constructor(private Electoralvoting: ElectoralvotingService,
+              public dialog: MatDialog) {}
 
   scrollTop = 0;
   hideNav = false;
+
+  eleccion: EleccionVoting[] = [];
+
   elecciones = [
     new Eleccion(
       'TituloActivo',
@@ -52,23 +69,23 @@ export class EleccionesComponent implements OnInit {
       '05/06/2022'
     ),
   ];
+
   eleccionesActivas: Eleccion[] = [];
   eleccionesPasadas: Eleccion[] = [];
 
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll(event: any) {
-    const currentScroll = window.pageYOffset;
-    if (currentScroll > 50) {
-      this.hideNav = true;
-    } else {
-      this.hideNav = false;
-    }
+  ngOnInit(): void {
+    //this.eleccionesActivas = this.elecciones;
+    //this.eleccionesPasadas = this.elecciones;
+    //this.initializeElections();
+    this.initialize();
   }
 
-  ngOnInit(): void {
-    this.eleccionesActivas = this.elecciones;
-    this.eleccionesPasadas = this.elecciones;
-    this.initializeElections();
+  initialize() {
+    console.log("tamo bien")
+    this.Electoralvoting.getAllElectoralVoting().subscribe((data: any) => {
+      console.log(data)
+      //this.eleccion = data;
+    });
   }
 
   initializeElections() {

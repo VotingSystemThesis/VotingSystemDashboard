@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
       console.log(bodyToSend);
       this.loginService.authenticate(bodyToSend).subscribe((data: any) => {
         this.loginService.handleToken(data.token);
+        console.log(data);
       });
     } else {
     }
