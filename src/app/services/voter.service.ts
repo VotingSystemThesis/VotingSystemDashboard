@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, retry, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -21,8 +21,10 @@ export class VoterService {
   validateFingerprint(fingerUrl: string) {
     return this.http.get(fingerUrl);
   }
-  registerFingerprint(dni:string){
-    return this.http.get('http://localhost:8080/s3/upload/'+dni)
+  registerFingerprint(dni: string) {
+    return this.http.get(`http://localhost:8080/s3/${dni}/validate/false`, {
+      headers: new HttpHeaders({ timeout: `${20000}` }),
+    });
   }
 
   handleError(error: any) {

@@ -1,0 +1,15 @@
+<div class="fingerprint">
+  <h1>Registro de Huella Dactilar</h1>
+  <p>Por favor, coloque su dedo indice cuando observe el color verde</p>
+  <div class="lds-roller" *ngIf="isLoading">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="newColor" [ngClass]="testing"></div>
+</div>
