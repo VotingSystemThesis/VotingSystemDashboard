@@ -20,6 +20,7 @@
     <div class="content">
       <app-elecciones-card
         *ngFor="let eleccion of eleccionesActivas"
+        [election]="eleccion"
       ></app-elecciones-card>
     </div>
   </div>

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Eleccion } from 'src/model/Eleccion';
+import {EleccionVoting} from "../../../model/EleccionVoting";
 
 @Component({
   selector: 'app-elecciones-card',
@@ -7,10 +8,11 @@ import { Eleccion } from 'src/model/Eleccion';
   styleUrls: ['./elecciones-card.component.scss'],
 })
 export class EleccionesCardComponent implements OnInit {
-  @Input() election: Eleccion = new Eleccion(
+  @Input() election: EleccionVoting = new EleccionVoting(
     'TituloPrueba',
-    'Descripcion de la eleccion',
-    new Date()
+    'status',
+    new Date(),
+    true
   );
   constructor() {}
 

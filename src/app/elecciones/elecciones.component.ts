@@ -46,7 +46,6 @@ export class EleccionesComponent implements OnInit {
   }
 
   initialize() {
-    console.log('tamo bien');
     this.Electoralvoting.getAllElectoralVoting().subscribe((data: any) => {
       this.eleccion = data;
       this.splitElections();
