@@ -4,9 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { Eleccion } from 'src/model/Eleccion';
 import { FullactivesComponent } from './fullactives/fullactives.component';
 import { FullnoactivesComponent } from './fullnoactives/fullnoactives.component';
-import {VoterService} from "../services/voter.service";
-import {ElectoralvotingService} from "../services/electoralvoting.service";
-import {EleccionVoting} from "../../model/EleccionVoting";
+import { VoterService } from '../services/voter.service';
+import { ElectoralvotingService } from '../services/electoralvoting.service';
+import { EleccionVoting } from '../../model/EleccionVoting';
 @Component({
   selector: 'app-elecciones',
   templateUrl: './elecciones.component.html',
@@ -23,55 +23,20 @@ export class EleccionesComponent implements OnInit {
     }
   }
 
-  constructor(private Electoralvoting: ElectoralvotingService,
-              public dialog: MatDialog) {}
+  constructor(
+    private Electoralvoting: ElectoralvotingService,
+    public dialog: MatDialog
+  ) {}
 
   scrollTop = 0;
   hideNav = false;
 
   eleccion: EleccionVoting[] = [];
 
-  elecciones = [
-    new Eleccion(
-      'TituloActivo',
-      'DescripcionDeEleccion',
-      '01/06/2012',
-      '05/06/2022'
-    ),
-    new Eleccion(
-      'TituloActivo',
-      'DescripcionDeEleccion',
-      '01/06/2012',
-      '05/06/2022'
-    ),
-    new Eleccion(
-      'TituloActivo',
-      'DescripcionDeEleccion',
-      '01/06/2012',
-      '05/06/2022'
-    ),
-    new Eleccion(
-      'TituloActivo',
-      'DescripcionDeEleccion',
-      '01/06/2012',
-      '05/06/2022'
-    ),
-    new Eleccion(
-      'TituloActivo',
-      'DescripcionDeEleccion',
-      '01/06/2012',
-      '05/06/2022'
-    ),
-    new Eleccion(
-      'TituloActivo',
-      'DescripcionDeEleccion',
-      '01/06/2012',
-      '05/06/2022'
-    ),
-  ];
+  elecciones = [];
 
-  eleccionesActivas: Eleccion[] = [];
-  eleccionesPasadas: Eleccion[] = [];
+  eleccionesActivas: any[] = [];
+  eleccionesPasadas: any[] = [];
 
   ngOnInit(): void {
     //this.eleccionesActivas = this.elecciones;
@@ -81,10 +46,19 @@ export class EleccionesComponent implements OnInit {
   }
 
   initialize() {
-    console.log("tamo bien")
+    console.log('tamo bien');
     this.Electoralvoting.getAllElectoralVoting().subscribe((data: any) => {
-      console.log(data)
-      //this.eleccion = data;
+      this.eleccion = data;
+      this.splitElections();
+    });
+  }
+  splitElections() {
+    this.eleccionesActivas = this.eleccion.filter((x) => {
+      return x.isActive == true;
+    });
+
+    this.eleccionesPasadas = this.eleccion.filter((x) => {
+      return x.isActive == false;
     });
   }
 

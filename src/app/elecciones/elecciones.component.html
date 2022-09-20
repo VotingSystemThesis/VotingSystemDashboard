@@ -31,6 +31,7 @@
     <div class="content">
       <app-elecciones-card
         *ngFor="let eleccion of eleccionesPasadas"
+        [election]="eleccion"
       ></app-elecciones-card>
     </div>
   </div>

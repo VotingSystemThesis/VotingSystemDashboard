@@ -1,18 +1,11 @@
 export class Eleccion {
   title: String;
   description: String;
-  fechaInit: String;
-  fechaFin: String;
+  date: Date;
 
-  constructor(
-    title: String,
-    description: String,
-    fechaInit: String,
-    fechaFin: String
-  ) {
+  constructor(title: String, description: String, date: Date) {
     this.title = title;
     this.description = description;
-    this.fechaFin = fechaFin;
-    this.fechaInit = fechaInit;
+    this.date = date;
   }
 }

@@ -21,6 +21,9 @@ export class VoterService {
   validateFingerprint(fingerUrl: string) {
     return this.http.get(fingerUrl);
   }
+  registerFingerprint(dni:string){
+    return this.http.get('http://localhost:8080/s3/upload/'+dni)
+  }
 
   handleError(error: any) {
     let errorMessage = '';

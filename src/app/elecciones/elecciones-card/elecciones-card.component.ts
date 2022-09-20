@@ -10,8 +10,7 @@ export class EleccionesCardComponent implements OnInit {
   @Input() election: Eleccion = new Eleccion(
     'TituloPrueba',
     'Descripcion de la eleccion',
-    '01/12/2022',
-    '05/12/2022'
+    new Date()
   );
   constructor() {}
 
