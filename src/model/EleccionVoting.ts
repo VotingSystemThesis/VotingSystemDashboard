@@ -1,5 +1,4 @@
 export class EleccionVoting {
-  id?: string;
   description: String;
   votingStatus: String;
   date: Date;
