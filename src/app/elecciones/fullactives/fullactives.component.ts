@@ -7,12 +7,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./fullactives.component.scss'],
 })
 export class FullactivesComponent implements OnInit {
+  eleccion: any[] = [];
   constructor(
     public dialogRef: MatDialogRef<FullactivesComponent>,
     @Inject(MAT_DIALOG_DATA) public data?: any
   ) {}
 
   ngOnInit(): void {
+    this.eleccion = this.data.elecciones;
     console.log(this.data.elecciones);
   }
 

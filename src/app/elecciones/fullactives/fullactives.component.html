@@ -3,6 +3,9 @@
     <button (click)="closeDialog()"><mat-icon>close</mat-icon></button>
   </div>
   <div class="content">
-    <app-elecciones-card></app-elecciones-card>
+    <app-elecciones-card
+      *ngFor="let lista of eleccion"
+      [election]="lista">
+    </app-elecciones-card>
   </div>
 </div>
