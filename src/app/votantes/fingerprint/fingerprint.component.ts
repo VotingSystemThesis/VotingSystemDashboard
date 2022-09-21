@@ -14,7 +14,7 @@ export class FingerprintComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data?: any
   ) {}
   isLoading = true;
-  testing: any = 'stop';
+  testing: any = 'go';
   time: any;
   ngOnInit(): void {
     this.voterService
@@ -25,10 +25,11 @@ export class FingerprintComponent implements OnInit {
     this.countFourSeconds();
   }
   countFourSeconds() {
+    setTimeout(() => {}, 100);
     this.time = setInterval(() => {
-      this.testing = 'go';
+      this.testing = 'stop';
       setTimeout(() => {
-        this.testing = 'stop';
+        this.testing = 'go';
       }, 800);
     }, 4000);
   }
