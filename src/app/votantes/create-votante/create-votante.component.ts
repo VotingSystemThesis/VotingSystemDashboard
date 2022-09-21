@@ -56,8 +56,8 @@ export class CreateVotanteComponent implements OnInit {
 
   submitForm() {
     if (this.votanteForm.valid) {
-      var newbirthDate = this.votanteForm.get('emissionDate')?.value;
-      var newEmissionDate = this.votanteForm.get('birthDate')?.value;
+      var newbirthDate = this.votanteForm.get('birthDate')?.value;
+      var newEmissionDate = this.votanteForm.get('emissionDate')?.value;
 
       let gender = this.votanteForm.get('gender')?.value;
       let body = {
