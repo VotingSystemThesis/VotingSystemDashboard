@@ -26,6 +26,9 @@ export class VoterService {
       headers: new HttpHeaders({ timeout: `${20000}` }),
     });
   }
+  deleteBuffer(dni: string) {
+    return this.http.delete(`http://localhost:8080/s3/buffer/${dni}`);
+  }
 
   handleError(error: any) {
     let errorMessage = '';

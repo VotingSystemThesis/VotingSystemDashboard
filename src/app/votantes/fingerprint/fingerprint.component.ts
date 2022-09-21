@@ -20,6 +20,11 @@ export class FingerprintComponent implements OnInit {
     this.voterService
       .registerFingerprint(this.data.voter.dni)
       .subscribe((data: any) => {
+        this.voterService
+          .deleteBuffer(this.data.voter.dni)
+          .subscribe((data) => {
+            console.log(data + 'Cleaned');
+          });
         this.dialogRef.close(data);
       });
     this.countFourSeconds();
