@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  hostUrl: 'backend-api',
+  hostUrl: 'http://54.232.15.128',
 };
 
 /*
