@@ -44,7 +44,7 @@
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumError": "1mb"
                 }
               ],
               "fileReplacements": [
@@ -75,10 +75,12 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "VotingDashboard:build:production"
+              "browserTarget": "VotingDashboard:build:production",
+              "proxyConfig": "proxy.conf.json"
             },
             "development": {
-              "browserTarget": "VotingDashboard:build:development"
+              "browserTarget": "VotingDashboard:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
