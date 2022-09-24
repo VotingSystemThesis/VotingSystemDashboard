@@ -7,6 +7,7 @@ export class Candidato {
   politicalParty?: Partido;
   email: string;
   gender?: boolean;
+  votingId?: string;
   dni: string;
   birthDate: Date;
 

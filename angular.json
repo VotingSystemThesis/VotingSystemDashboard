@@ -75,12 +75,10 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "VotingDashboard:build:production",
-              "proxyConfig": "proxy.conf.json"
+              "browserTarget": "VotingDashboard:build:production"
             },
             "development": {
-              "browserTarget": "VotingDashboard:build:development",
-              "proxyConfig": "proxy.conf.json"
+              "browserTarget": "VotingDashboard:build:development"
             }
           },
           "defaultConfiguration": "development"

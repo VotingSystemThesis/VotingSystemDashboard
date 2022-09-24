@@ -1,12 +1,13 @@
 export class EleccionVoting {
-  description: String;
-  votingStatus: String;
+  id?: string;
+  description: string;
+  votingStatus: string;
   date: Date;
   isActive: boolean;
 
   constructor(
-    description: String,
-    votingStatus: String,
+    description: string,
+    votingStatus: string,
     date: Date,
     isActive: boolean
   ) {

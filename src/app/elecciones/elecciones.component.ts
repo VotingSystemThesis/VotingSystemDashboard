@@ -53,11 +53,11 @@ export class EleccionesComponent implements OnInit {
   }
   splitElections() {
     this.eleccionesActivas = this.eleccion.filter((x) => {
-      return x.isActive == true;
+      return x.votingStatus == 'PENDING';
     });
 
     this.eleccionesPasadas = this.eleccion.filter((x) => {
-      return x.isActive == false;
+      return x.votingStatus == 'COMPLETED';
     });
   }
 
