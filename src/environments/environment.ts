@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  hostUrl: 'backend-api',
+  hostUrl: 'https://www.reniec.info',
 };
 
 /*
