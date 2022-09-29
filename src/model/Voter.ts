@@ -1,9 +1,10 @@
 export class Votante {
   name: string;
+  id?: string;
   lastName: string;
   dni: string;
   email?: string;
-  gender?: string;
+  gender?: boolean;
   voted?: boolean;
   birthDate?: Date;
   emissionDate?: Date;

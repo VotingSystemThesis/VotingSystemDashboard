@@ -74,7 +74,6 @@ export class CreateCandidateComponent implements OnInit {
 
   initializePoliticalPartyToEdit(id: string) {
     this.politicalparty = this.polliticalParties.find((x) => x.id == id);
-    console.log(this.politicalparty);
   }
   initializeFormToEdit() {
     var date = this.candidate.birthDate.toString();
@@ -109,7 +108,6 @@ export class CreateCandidateComponent implements OnInit {
     if (this.candidateForm.valid) {
       var newDate = this.candidateForm.get('dateBirth')?.value;
       newDate = this.datePipe.transform(newDate, 'dd-MM-yyyy');
-      console.log(this.politicalparty);
       let politicalPartyBody = {
         id: this.politicalparty?.id,
         name: this.politicalparty?.name,
@@ -124,12 +122,11 @@ export class CreateCandidateComponent implements OnInit {
         dni: this.candidateForm.get('dni')?.value,
         email: this.candidateForm.get('email')?.value,
         votingId: this.election.id,
-        gender: Boolean(gender),
+        gender: this.candidateForm.get('gender')?.value,
         birthDate: newDate,
         politicalParty: politicalPartyBody,
       };
       if (this.isNew) {
-        console.log(body);
         this.candidateService
           .createCandidate(body)
           .subscribe((response: any) => {

@@ -17,6 +17,7 @@
       <h1>No hay votantes disponibles</h1>
     </div>
     <app-votante-card
+      (resultEmitter)="this.initialize()"
       *ngFor="let votante of votantes"
       [votante]="votante"
     ></app-votante-card>

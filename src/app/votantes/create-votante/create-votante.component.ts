@@ -34,15 +34,34 @@ export class CreateVotanteComponent implements OnInit {
     if (this.data != null) {
       this.voter = this.data.votanteToEdit;
       this.initializeFormToEdit();
-      console.log(this.voter);
+      this.isNew = false;
     } else {
       this.votanteForm.reset();
     }
   }
+
+  updateFormGender(event: any, isNew = true) {
+    if (isNew) this.votanteForm.get('gender')?.setValue(event.target.value);
+    else {
+      this.votanteForm.get('gender')?.setValue(event);
+    }
+  }
+
   initializeFormToEdit() {
+    var datebirth = this.voter.birthDate!.toString();
+    var newdatebirth = datebirth.split('-').reverse().join('-');
+
+    var emissinDate = this.voter.emissionDate!.toString();
+    var newemissinDate = emissinDate.split('-').reverse().join('-');
     this.votanteForm.patchValue({
       name: this.voter.name,
+      gender: this.voter.gender,
       lastname: this.voter.lastName,
+      dni: this.voter.dni,
+      city: this.voter.city,
+      email: this.voter.email,
+      birthDate: this.datePipe.transform(newdatebirth, 'yyyy-MM-dd'),
+      emissionDate: this.datePipe.transform(newemissinDate, 'yyyy-MM-dd'),
     });
   }
 
@@ -52,30 +71,32 @@ export class CreateVotanteComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  updateFormGender(event: any) {}
-
   submitForm() {
     if (this.votanteForm.valid) {
       var newbirthDate = this.votanteForm.get('birthDate')?.value;
       var newEmissionDate = this.votanteForm.get('emissionDate')?.value;
 
-      let gender = this.votanteForm.get('gender')?.value;
       let body = {
         name: this.votanteForm.get('name')?.value,
         lastName: this.votanteForm.get('lastname')?.value,
         email: this.votanteForm.get('email')?.value,
         dni: this.votanteForm.get('dni')?.value,
-        gender: Boolean(gender),
+        gender: this.votanteForm.get('gender')?.value!,
         birthDate: this.datePipe.transform(newbirthDate, 'dd-MM-yyyy'),
         emissionDate: this.datePipe.transform(newEmissionDate, 'dd-MM-yyyy'),
         city: this.votanteForm.get('city')?.value,
       };
+
       if (this.isNew) {
         this.voterService.createVoter(body).subscribe((data: any) => {
           this.closeDialog();
         });
       } else {
-        console.log('Editar');
+        this.voterService
+          .updateVoter(body, this.voter.id!)
+          .subscribe((response: any) => {
+            this.dialogRef.close();
+          });
       }
     } else {
       console.log('No Valido');

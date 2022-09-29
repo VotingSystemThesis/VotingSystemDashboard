@@ -6,12 +6,14 @@
   width: 200px;
   height: 240px;
   border-radius: 20px;
+  cursor: pointer;
   background-color: white;
   padding: 10px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
+  transition: ease all 250ms;
   h1,
   p {
     margin: 0;
@@ -31,4 +33,7 @@
     margin-top: 10px;
     font-size: 1rem;
   }
+}
+.card:hover {
+  transform: scale(1.05);
 }

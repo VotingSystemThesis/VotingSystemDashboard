@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { VoterService } from 'src/app/services/voter.service';
 import { Votante } from 'src/model/Voter';
+import { CreateVotanteComponent } from '../create-votante/create-votante.component';
 import { FingerprintComponent } from '../fingerprint/fingerprint.component';
 
 @Component({
@@ -12,6 +13,8 @@ import { FingerprintComponent } from '../fingerprint/fingerprint.component';
 })
 export class VotanteCardComponent implements OnInit {
   @Input() votante: Votante = new Votante('Pedrito', 'Perez', '12345678');
+  @Output() resultEmitter = new EventEmitter();
+
   hasFingerprinrt = true;
   constructor(
     private voterService: VoterService,
@@ -53,6 +56,22 @@ export class VotanteCardComponent implements OnInit {
             panelClass: ['red-snackbar'],
           });
         }
+      });
+  }
+
+  openEdit() {
+    const dialogRef = this.dialog
+      .open(CreateVotanteComponent, {
+        width: '50vw',
+        height: '70vh',
+        data: {
+          votanteToEdit: this.votante,
+        },
+      })
+      .afterClosed()
+      .subscribe((data: any) => {
+        console.log(data);
+        this.resultEmitter.emit();
       });
   }
 }

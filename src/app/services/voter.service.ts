@@ -18,6 +18,11 @@ export class VoterService {
   createVoter(body: any) {
     return this.http.post(this.url, body);
   }
+
+  updateVoter(body: any, id: string) {
+    return this.http.put(`${this.url}/${id}`, body);
+  }
+
   validateFingerprint(fingerUrl: string) {
     return this.http.get(fingerUrl);
   }
