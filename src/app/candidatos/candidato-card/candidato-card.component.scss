@@ -11,6 +11,7 @@
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
+  transition: ease all 250ms;
   h1,
   p {
     margin: 0;
@@ -26,4 +27,8 @@
     align-items: center;
     justify-content: center;
   }
+  cursor: pointer;
+}
+.card:hover {
+  transform: scale(1.05);
 }

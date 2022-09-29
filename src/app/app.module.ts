@@ -29,6 +29,7 @@ import { AuthGuard } from './guards/auth/auth.guard';
 import { DatePipe } from '@angular/common';
 import { FingerprintComponent } from './votantes/fingerprint/fingerprint.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CreateElectionComponent } from './elecciones/create-election/create-election.component';
 
 const shortDatePatterns = {
   'aa-DJ': 'dd/MM/yyyy',
@@ -56,6 +57,7 @@ const shortDatePatterns = {
     CreatePartidoComponent,
     CreateVotanteComponent,
     FingerprintComponent,
+    CreateElectionComponent,
   ],
   imports: [
     BrowserModule,

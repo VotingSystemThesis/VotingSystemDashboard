@@ -75,4 +75,10 @@ export class EleccionesComponent implements OnInit {
       },
     });
   }
+  crateDialog() {
+    const dialogRef = this.dialog.open(FullactivesComponent, {
+      width: '30vw',
+      height: '50vh',
+    });
+  }
 }
