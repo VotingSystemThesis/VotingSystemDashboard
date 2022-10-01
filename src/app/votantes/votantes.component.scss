@@ -8,6 +8,16 @@
   padding: 8% 5%;
   @include title();
   @include paragraph();
+  @include form-controller(
+    (
+      Properties: (
+        border-color: rgb(195, 21, 21),
+        height: 30px,
+        radius: 40px,
+      ),
+    )
+  );
+
   @include button();
   h1,
   p {
@@ -26,6 +36,21 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      .filter {
+        width: 50vw;
+        display: flex;
+        gap: 1rem;
+        .form-controller {
+          width: 100%;
+
+          .form-container {
+            background-color: white;
+          }
+          .form-container.select {
+            width: 40%;
+          }
+        }
+      }
     }
     .actions {
       display: flex;

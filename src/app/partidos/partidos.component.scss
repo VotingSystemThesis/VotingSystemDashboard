@@ -9,6 +9,15 @@
   @include title();
   @include paragraph();
   @include button();
+  @include form-controller(
+    (
+      Properties: (
+        border-color: rgb(195, 21, 21),
+        height: 30px,
+        radius: 40px,
+      ),
+    )
+  );
   h1,
   p {
     margin: 0;
@@ -26,6 +35,21 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      .filter {
+        width: 50vw;
+        display: flex;
+        gap: 1rem;
+        .form-controller {
+          width: 100%;
+
+          .form-container {
+            background-color: white;
+          }
+          .form-container.select {
+            width: 40%;
+          }
+        }
+      }
     }
     .actions {
       display: flex;

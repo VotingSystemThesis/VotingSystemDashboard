@@ -1,6 +1,10 @@
-<div (click)="openEdit()" class="card mat-elevation-z4">
+<div
+  (click)="openEdit()"
+  class="card mat-elevation-z4"
+  [ngClass]="{ inactive: partido.status == false }"
+>
   <h1>{{ partido.name }}</h1>
   <h1>{{ partido.description }}</h1>
-  <p>{{ partido.status ? "Activo" : "Inactivo" }}</p>
+  <!-- <p>{{ partido.status ? "Activo" : "Inactivo" }}</p> -->
   <p>{{ partido.creationDate }}</p>
 </div>

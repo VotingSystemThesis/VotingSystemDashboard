@@ -5,6 +5,32 @@
     <div class="title">
       <h1>Candidatos</h1>
       <p>Gestión de los candidatos</p>
+      <div class="filter">
+        <div class="form-controller">
+          <div class="form-container">
+            <input
+              [(ngModel)]="inputFilter"
+              placeholder="Ingrese su filtro"
+              type="text"
+              (ngModelChange)="onInputFilterChange($event)"
+            />
+          </div>
+        </div>
+        <div class="form-controller">
+          <div class="form-container select">
+            <select
+              (change)="onSelectFilterChange($event)"
+              [(ngModel)]="selectFilter"
+            >
+              <option value="----" [selected]="true" [disabled]="true">
+                Seleccione
+              </option>
+              <option [value]="'dni'">DNI</option>
+              <option [value]="'name'">Nombre</option>
+            </select>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="action">
       <button (click)="createCandidate()">
@@ -19,7 +45,7 @@
     </div>
     <app-candidato-card
       (resultEmitter)="this.initialize()"
-      *ngFor="let candidato of candidatos"
+      *ngFor="let candidato of candidatosFiltered"
       [candidato]="candidato"
     ></app-candidato-card>
   </div>

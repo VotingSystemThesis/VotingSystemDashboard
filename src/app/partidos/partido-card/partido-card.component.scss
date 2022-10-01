@@ -32,3 +32,6 @@
 .card:hover {
   transform: scale(1.05);
 }
+.card.inactive {
+  background-color: #c4c4c4;
+}

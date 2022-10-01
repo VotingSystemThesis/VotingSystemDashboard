@@ -16,10 +16,13 @@ export class CandidatosComponent implements OnInit {
   ) {}
   scrollTop = 0;
   hideNav = false;
+  inputFilter = '';
+  selectFilter = '----';
   ngOnInit(): void {
     this.initialize();
   }
   candidatos: Candidato[] = [];
+  candidatosFiltered: Candidato[] = [];
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(event: any) {
@@ -44,6 +47,29 @@ export class CandidatosComponent implements OnInit {
   initialize() {
     this.candidateService.getAllCandidates().subscribe((data: any) => {
       this.candidatos = data;
+      this.candidatosFiltered = this.candidatos;
     });
+  }
+
+  onInputFilterChange(e: any) {
+    this.candidatosFiltered = this.candidatos;
+
+    if (e != '') {
+      if (this.selectFilter == 'dni') {
+        this.candidatosFiltered = this.candidatosFiltered.filter((x) =>
+          x.dni.includes(e)
+        );
+      }
+      if (this.selectFilter == 'name') {
+        this.candidatosFiltered = this.candidatosFiltered.filter(
+          (x) =>
+            x.name.toLowerCase().includes(e.toLowerCase()) ||
+            x.lastName.toLowerCase().includes(e.toLowerCase())
+        );
+      }
+    }
+  }
+  onSelectFilterChange(e: any) {
+    this.selectFilter = e.target.value;
   }
 }

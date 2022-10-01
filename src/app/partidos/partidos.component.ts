@@ -15,9 +15,12 @@ export class PartidosComponent implements OnInit {
     public dialog: MatDialog,
     private polliticalPartyService: PoliticalpartyService
   ) {}
+  inputFilter = '';
+  selectFilter = '----';
   scrollTop = 0;
   hideNav = false;
   partidos: Partido[] = [];
+  partidosFiltered: Partido[] = [];
   ngOnInit(): void {
     this.initialize();
   }
@@ -49,6 +52,22 @@ export class PartidosComponent implements OnInit {
       .getAllPolliticalParty()
       .subscribe((data: any) => {
         this.partidos = data;
+        this.partidosFiltered = this.partidos;
       });
+  }
+
+  onInputFilterChange(e: any) {
+    this.partidosFiltered = this.partidos;
+    console.log(e);
+    if (e != '') {
+      if (this.selectFilter == 'name') {
+        this.partidosFiltered = this.partidosFiltered.filter((x) =>
+          x.name.toLowerCase().includes(e.toLowerCase())
+        );
+      }
+    }
+  }
+  onSelectFilterChange(e: any) {
+    this.selectFilter = e.target.value;
   }
 }

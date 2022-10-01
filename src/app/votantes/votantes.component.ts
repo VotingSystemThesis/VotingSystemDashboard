@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Votante } from 'src/model/Voter';
 import { VoterService } from '../services/voter.service';
 import { CreateVotanteComponent } from './create-votante/create-votante.component';
 
@@ -18,7 +19,10 @@ export class VotantesComponent implements OnInit {
       this.hideNav = false;
     }
   }
+  inputFilter = '';
+  selectFilter = '----';
   votantes: any[] = [];
+  votantesFiltered: Votante[] = [];
 
   constructor(private voterService: VoterService, public dialog: MatDialog) {}
   scrollTop = 0;
@@ -29,6 +33,7 @@ export class VotantesComponent implements OnInit {
   initialize() {
     this.voterService.getAllVoters().subscribe((data: any) => {
       this.votantes = data;
+      this.votantesFiltered = this.votantes;
     });
   }
   createVoter() {
@@ -41,5 +46,31 @@ export class VotantesComponent implements OnInit {
       .subscribe((data: any) => {
         this.initialize();
       });
+  }
+  onInputFilterChange(e: any) {
+    this.votantesFiltered = this.votantes;
+
+    if (e != '') {
+      if (this.selectFilter == 'dni') {
+        this.votantesFiltered = this.votantesFiltered.filter((x) =>
+          x.dni.includes(e)
+        );
+      }
+      if (this.selectFilter == 'name') {
+        this.votantesFiltered = this.votantesFiltered.filter(
+          (x) =>
+            x.name.toLowerCase().includes(e.toLowerCase()) ||
+            x.lastName.toLowerCase().includes(e.toLowerCase())
+        );
+      }
+      if (this.selectFilter == 'city') {
+        this.votantesFiltered = this.votantesFiltered.filter((x) =>
+          x.city!.toLowerCase().includes(e.toLowerCase())
+        );
+      }
+    }
+  }
+  onSelectFilterChange(e: any) {
+    this.selectFilter = e.target.value;
   }
 }

@@ -4,6 +4,33 @@
     <div class="title">
       <h1>Votantes</h1>
       <p>Gestión de los votantes</p>
+      <div class="filter">
+        <div class="form-controller">
+          <div class="form-container">
+            <input
+              [(ngModel)]="inputFilter"
+              placeholder="Ingrese su filtro"
+              type="text"
+              (ngModelChange)="onInputFilterChange($event)"
+            />
+          </div>
+        </div>
+        <div class="form-controller">
+          <div class="form-container select">
+            <select
+              (change)="onSelectFilterChange($event)"
+              [(ngModel)]="selectFilter"
+            >
+              <option value="----" [selected]="true" [disabled]="true">
+                Seleccione
+              </option>
+              <option [value]="'dni'">DNI</option>
+              <option [value]="'name'">Nombre</option>
+              <option [value]="'city'">Ciudad</option>
+            </select>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="action">
       <button (click)="createVoter()">
@@ -18,7 +45,7 @@
     </div>
     <app-votante-card
       (resultEmitter)="this.initialize()"
-      *ngFor="let votante of votantes"
+      *ngFor="let votante of votantesFiltered"
       [votante]="votante"
     ></app-votante-card>
   </div>

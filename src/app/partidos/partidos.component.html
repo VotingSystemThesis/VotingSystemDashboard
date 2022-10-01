@@ -5,6 +5,31 @@
     <div class="title">
       <h1>Partidos</h1>
       <p>Gestión de los Partidos</p>
+      <div class="filter">
+        <div class="form-controller">
+          <div class="form-container">
+            <input
+              [(ngModel)]="inputFilter"
+              placeholder="Ingrese su filtro"
+              type="text"
+              (ngModelChange)="onInputFilterChange($event)"
+            />
+          </div>
+        </div>
+        <div class="form-controller">
+          <div class="form-container select">
+            <select
+              (change)="onSelectFilterChange($event)"
+              [(ngModel)]="selectFilter"
+            >
+              <option value="----" [selected]="true" [disabled]="true">
+                Seleccione
+              </option>
+              <option [value]="'name'">Nombre</option>
+            </select>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="action">
       <button (click)="createPartido()">
@@ -18,7 +43,7 @@
       <h1>No hay partidos disponibles</h1>
     </div>
     <app-partido-card
-      *ngFor="let partido of partidos"
+      *ngFor="let partido of partidosFiltered"
       [partido]="partido"
       (resultEmitter)="this.initialize()"
     ></app-partido-card>
