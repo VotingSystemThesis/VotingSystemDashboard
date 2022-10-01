@@ -12,95 +12,102 @@
   </div>
   <div class="content">
     <form [formGroup]="candidateForm">
-      <div class="form-controller">
-        <label>Nombre</label>
-        <div class="form-container">
-          <input
-            formControlName="name"
-            placeholder="Ingrese su nombre"
-            type="text"
-          />
-          <mat-icon>person</mat-icon>
+      <div class="first_part_container">
+        <div class="form-controller">
+          <label>Nombre</label>
+          <div class="form-container">
+            <input
+              formControlName="name"
+              placeholder="Ingrese su nombre"
+              type="text"
+            />
+            <mat-icon>person</mat-icon>
+          </div>
         </div>
-      </div>
-      <div class="form-controller">
-        <label>Apellido</label>
-        <div class="form-container">
-          <input
-            formControlName="lastname"
-            placeholder="Ingrese su apellido"
-            type="text"
-          />
-          <mat-icon>person</mat-icon>
+        <div class="form-controller">
+          <label>Apellido</label>
+          <div class="form-container">
+            <input
+              formControlName="lastname"
+              placeholder="Ingrese su apellido"
+              type="text"
+            />
+            <mat-icon>person</mat-icon>
+          </div>
         </div>
-      </div>
-      <div class="form-controller">
-        <label>Genero</label>
-        <div class="form-container">
-          <select formControlName="gender" (change)="updateFormGender($event)">
-            <option
-              value="----"
-              [selected]="true"
-              [disabled]="true"
-              *ngIf="candidate.name.length == 0"
+        <div class="form-controller">
+          <label>Genero</label>
+          <div class="form-container">
+            <select
+              formControlName="gender"
+              (change)="updateFormGender($event)"
             >
-              Seleccione su genero
-            </option>
-            <option value="{{ true }}">Masculino</option>
-            <option value="{{ false }}">Femenino</option>
-          </select>
+              <option
+                value="----"
+                [selected]="true"
+                [disabled]="true"
+                *ngIf="candidate.name.length == 0"
+              >
+                Seleccione su genero
+              </option>
+              <option value="{{ true }}">Masculino</option>
+              <option value="{{ false }}">Femenino</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-controller">
+          <label>Partido Politico</label>
+          <div class="form-container">
+            <select formControlName="politicalParty">
+              <option
+                *ngFor="let partido of polliticalParties"
+                [value]="partido.id"
+              >
+                {{ partido.name }}
+              </option>
+            </select>
+          </div>
         </div>
       </div>
-      <div class="form-controller">
-        <label>Partido Politico</label>
-        <div class="form-container">
-          <select formControlName="politicalParty">
-            <option
-              *ngFor="let partido of polliticalParties"
-              [value]="partido.id"
-            >
-              {{ partido.name }}
-            </option>
-          </select>
+      <div class="second_part_container">
+        <div class="form-controller">
+          <label>Eleccion a Participar</label>
+          <div class="form-container">
+            <select formControlName="election">
+              <option *ngFor="let election of elections" [value]="election.id">
+                {{ election.description }}
+              </option>
+            </select>
+          </div>
         </div>
-      </div>
-      <div class="form-controller">
-        <label>Eleccion a Participar</label>
-        <div class="form-container">
-          <select formControlName="election">
-            <option *ngFor="let election of elections" [value]="election.id">
-              {{ election.description }}
-            </option>
-          </select>
+        <div class="form-controller">
+          <label>Correo Electrónico</label>
+          <div class="form-container">
+            <input
+              formControlName="email"
+              placeholder="Ingrese su correo electrónico"
+              type="email"
+            />
+            <mat-icon>mail</mat-icon>
+          </div>
         </div>
-      </div>
-      <div class="form-controller">
-        <label>Correo Electrónico</label>
-        <div class="form-container">
-          <input
-            formControlName="email"
-            placeholder="Ingrese su correo electrónico"
-            type="email"
-          />
-          <mat-icon>mail</mat-icon>
+        <div class="form-controller">
+          <label>DNI</label>
+          <div class="form-container">
+            <input
+              formControlName="dni"
+              placeholder="Ingrese su DNI"
+              type="text"
+            />
+            <mat-icon>badge</mat-icon>
+          </div>
         </div>
-      </div>
-      <div class="form-controller">
-        <label>DNI</label>
-        <div class="form-container">
-          <input
-            formControlName="dni"
-            placeholder="Ingrese su DNI"
-            type="text"
-          />
-          <mat-icon>badge</mat-icon>
-        </div>
-      </div>
 
-      <div class="form-controller">
-        <label>Fecha de Nacimiento</label>
-        <div class="form-container">
-          <input formControlName="dateBirth" type="date" />
+        <div class="form-controller">
+          <label>Fecha de Nacimiento</label>
+          <div class="form-container">
+            <input formControlName="dateBirth" type="date" />
+          </div>
         </div>
       </div>
       <button (click)="submitForm()">

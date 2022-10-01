@@ -9,6 +9,11 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class ElectoralvotingService {
+  corsHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+    'Access-Control-Allow-Origin': '*',
+  });
   url = `${environment.hostUrl}/manager/voting`;
 
   token: string = '';
@@ -42,6 +47,21 @@ export class ElectoralvotingService {
     console.log(errorMessage);
     return throwError(() => {
       return errorMessage;
+    });
+  }
+
+  createElection(body: any) {
+    let corsHeaders = new HttpHeaders({
+      Authorization: this.token,
+    });
+    return this.http.post(this.url, body, { headers: corsHeaders });
+  }
+  editElection(body: any, id: string) {
+    let corsHeaders = new HttpHeaders({
+      Authorization: this.token,
+    });
+    return this.http.put(`${this.url}/${id}`, body, {
+      headers: corsHeaders,
     });
   }
 }

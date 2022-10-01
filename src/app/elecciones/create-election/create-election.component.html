@@ -1,1 +1,55 @@
-<p>create-election works!</p>
+<div class="container">
+  <div class="header">
+    <h1>Generar Eleccion</h1>
+    <div class="actions">
+      <button
+        (click)="deleteElection()"
+        *ngIf="election.description.length > 0"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button class="close" (click)="closeDialog()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="content">
+    <form [formGroup]="electionForm">
+      <div class="form-controller">
+        <label>Nombre</label>
+        <div class="form-container">
+          <input
+            formControlName="description"
+            placeholder="Ingrese el nombre de la eleccion"
+            type="text"
+          />
+          <mat-icon>remember_me</mat-icon>
+        </div>
+      </div>
+      <div class="form-controller">
+        <label>Ciudad</label>
+        <div class="form-container">
+          <input
+            formControlName="city"
+            placeholder="Ingrese la ciudad"
+            type="text"
+          />
+          <mat-icon>map</mat-icon>
+        </div>
+      </div>
+      <div class="form-controller">
+        <label>Fecha de Creacion</label>
+        <div class="form-container">
+          <input formControlName="date" type="date" />
+        </div>
+      </div>
+      <button (click)="submitForm()">
+        {{
+          election.description.length > 0
+            ? " Editar Eleccion"
+            : "Registrar Eleccion"
+        }}
+      </button>
+    </form>
+  </div>
+</div>

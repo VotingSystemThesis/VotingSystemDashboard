@@ -1,4 +1,12 @@
 <div (click)="openEdit()" class="card mat-elevation-z4">
+  <img
+    src="{{
+      imageUrl.length > 0
+        ? imageUrl
+        : 'https://media.discordapp.net/attachments/637114961365041163/1024802988100948059/unknown.png'
+    }}"
+    alt=""
+  />
   <h1>{{ candidato.name }}</h1>
   <h1>{{ candidato.lastName }}</h1>
   <p>{{ candidato.dni }}</p>

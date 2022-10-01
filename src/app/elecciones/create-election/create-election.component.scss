@@ -1,0 +1,72 @@
+@import "src/assets/styles/styles.scss";
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include button();
+  @include title();
+  @include paragraph();
+  padding: 0px 10px;
+  h1 {
+    font-size: 1.5rem;
+  }
+  h1,
+  button {
+    margin: 0;
+  }
+  @include form-controller(
+    (
+      Properties: (
+        border-color: rgb(195, 21, 21),
+        height: 35px,
+        radius: 40px,
+      ),
+    )
+  );
+  flex-direction: column;
+  background-color: white;
+  border-radius: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  .header {
+    .actions {
+      display: flex;
+      button.close {
+        background-color: red;
+      }
+      button {
+        margin: 10px;
+      }
+    }
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: space-between;
+    button {
+      width: 50px;
+      padding: 0;
+    }
+  }
+  .content {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    form {
+      mat-slide-toggle {
+        font-family: $titleFont;
+      }
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      height: 100%;
+      .form-controller {
+        margin-bottom: 5px;
+      }
+      width: 100%;
+    }
+  }
+}

@@ -6,7 +6,7 @@
       <p>Gestión de las elecciones</p>
     </div>
     <div class="action">
-      <button>
+      <button (click)="crateDialog()">
         Crear Eleccion
         <mat-icon>add</mat-icon>
       </button>
@@ -21,6 +21,7 @@
       <app-elecciones-card
         *ngFor="let eleccion of eleccionesActivas"
         [election]="eleccion"
+        (resultEmitter)="this.initialize()"
       ></app-elecciones-card>
     </div>
   </div>

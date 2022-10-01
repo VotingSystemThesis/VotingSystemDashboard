@@ -50,6 +50,7 @@
     width: 100%;
     min-height: 50vh;
     display: grid;
+    padding: 5% 0;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 20px;
     grid-auto-rows: minmax(150px, auto);

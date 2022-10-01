@@ -3,6 +3,7 @@ export class EleccionVoting {
   description: string;
   votingStatus: string;
   date: Date;
+  city?: string;
   isActive: boolean;
 
   constructor(

@@ -12,6 +12,17 @@
   align-items: flex-start;
   flex-direction: column;
   transition: ease all 250ms;
+  position: relative;
+  img {
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    position: absolute;
+    top: 50%; /* position the top  edge of the element at the middle of the parent */
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+
+    transform: translate(-50%, -130%);
+  }
   h1,
   p {
     margin: 0;

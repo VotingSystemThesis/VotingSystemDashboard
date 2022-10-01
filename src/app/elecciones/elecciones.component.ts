@@ -7,6 +7,7 @@ import { FullnoactivesComponent } from './fullnoactives/fullnoactives.component'
 import { VoterService } from '../services/voter.service';
 import { ElectoralvotingService } from '../services/electoralvoting.service';
 import { EleccionVoting } from '../../model/EleccionVoting';
+import { CreateElectionComponent } from './create-election/create-election.component';
 @Component({
   selector: 'app-elecciones',
   templateUrl: './elecciones.component.html',
@@ -76,9 +77,14 @@ export class EleccionesComponent implements OnInit {
     });
   }
   crateDialog() {
-    const dialogRef = this.dialog.open(FullactivesComponent, {
-      width: '30vw',
-      height: '50vh',
-    });
+    const dialogRef = this.dialog
+      .open(CreateElectionComponent, {
+        width: '30vw',
+        height: '60vh',
+      })
+      .afterClosed()
+      .subscribe((data) => {
+        this.initialize();
+      });
   }
 }

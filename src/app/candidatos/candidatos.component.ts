@@ -34,7 +34,7 @@ export class CandidatosComponent implements OnInit {
     const dialogRef = this.dialog
       .open(CreateCandidateComponent, {
         width: '50vw',
-        height: '90vh',
+        height: '80vh',
       })
       .afterClosed()
       .subscribe((response: any) => {
