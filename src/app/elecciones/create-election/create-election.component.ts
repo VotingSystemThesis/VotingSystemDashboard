@@ -43,7 +43,14 @@ export class CreateElectionComponent implements OnInit {
   }
 
   deleteElection() {
-    this.dialogRef.close();
+    this.electoralVotingService.deleteElection(this.election.id!).subscribe(
+      (resp) => {
+        this.dialogRef.close();
+      },
+      (err) => {
+        this.dialogRef.close();
+      }
+    );
   }
   closeDialog() {
     this.dialogRef.close();

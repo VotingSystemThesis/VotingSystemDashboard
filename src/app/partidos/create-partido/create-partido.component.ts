@@ -44,7 +44,16 @@ export class CreatePartidoComponent implements OnInit {
     });
   }
   deletePartido() {
-    this.dialogRef.close();
+    this.polliticalPartyService
+      .deletePolliticalParty(this.partido.id!)
+      .subscribe(
+        (resp) => {
+          this.dialogRef.close();
+        },
+        (err) => {
+          this.dialogRef.close();
+        }
+      );
   }
 
   closeDialog() {

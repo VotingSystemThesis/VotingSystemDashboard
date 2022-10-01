@@ -145,7 +145,14 @@ export class CreateCandidateComponent implements OnInit {
     }
   }
   deleteCandidate() {
-    this.dialogRef.close();
+    this.candidateService.deleteCandidate(this.candidate.id!).subscribe(
+      (resp) => {
+        this.closeDialog();
+      },
+      (err) => {
+        this.closeDialog();
+      }
+    );
   }
   closeDialog() {
     this.dialogRef.close();

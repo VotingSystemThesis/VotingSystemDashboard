@@ -15,6 +15,9 @@ export class CandidateService {
   getAllCandidates(): Observable<any> {
     return this.http.get(this.url.toString());
   }
+  deleteCandidate(id: string) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
   getProfilePic(id: string) {
     return this.http.get(`${this.imageUrl}/${id}`);
   }

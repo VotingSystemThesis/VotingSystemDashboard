@@ -27,4 +27,9 @@ export class PoliticalpartyService {
       headers: this.corsHeaders,
     });
   }
+  deletePolliticalParty(id: string) {
+    return this.http.delete(`${this.url}/${id}`, {
+      headers: this.corsHeaders,
+    });
+  }
 }

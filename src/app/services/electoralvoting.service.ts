@@ -64,4 +64,12 @@ export class ElectoralvotingService {
       headers: corsHeaders,
     });
   }
+  deleteElection(id: string) {
+    let corsHeaders = new HttpHeaders({
+      Authorization: this.token,
+    });
+    return this.http.delete(`${this.url}/${id}`, {
+      headers: corsHeaders,
+    });
+  }
 }
