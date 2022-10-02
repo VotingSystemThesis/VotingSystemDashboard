@@ -23,8 +23,8 @@ export class PartidoCardComponent implements OnInit {
   openEdit() {
     const dialogRef = this.dialog
       .open(CreatePartidoComponent, {
-        width: '30vw',
-        height: '60vh',
+        width: '50vw',
+        height: '80vh',
         data: {
           partidoToEdit: this.partido,
         },

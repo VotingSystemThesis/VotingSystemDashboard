@@ -40,6 +40,10 @@
           <input formControlName="creationDate" type="date" />
         </div>
       </div>
+      <div class="form-controller status" *ngIf="partido.name.length > 0">
+        <label>Estado</label>
+        <p>{{ partido.status ? "Activo" : "Inactivo" }}</p>
+      </div>
       <button (click)="submitForm()">
         {{ partido.name.length > 0 ? " Editar Partido" : "Registrar Partido" }}
       </button>

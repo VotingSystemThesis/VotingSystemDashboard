@@ -66,6 +66,12 @@
       .form-controller {
         margin-bottom: 5px;
       }
+      .form-controller.status {
+        p {
+          text-align: start;
+          margin: 10px 0;
+        }
+      }
       width: 100%;
     }
   }

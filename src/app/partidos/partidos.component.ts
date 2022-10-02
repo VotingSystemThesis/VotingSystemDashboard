@@ -38,8 +38,8 @@ export class PartidosComponent implements OnInit {
   createPartido() {
     const dialogRef = this.dialog
       .open(CreatePartidoComponent, {
-        width: '30vw',
-        height: '60vh',
+        width: '50vw',
+        height: '80vh',
       })
       .afterClosed()
       .subscribe((data: any) => {
