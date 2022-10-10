@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Partido } from 'src/model/Partido';
 
 @Injectable({
   providedIn: 'root',
@@ -29,6 +30,16 @@ export class PoliticalpartyService {
   }
   deletePolliticalParty(id: string) {
     return this.http.delete(`${this.url}/${id}`, {
+      headers: this.corsHeaders,
+    });
+  }
+  validatePoliticalParty(file: any) {
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    return this.http.post(`${this.url}/save/adherent/list`, formData);
+  }
+  updateValidation(partidoId: string, nombreFile: string) {
+    return this.http.put(`${this.url}/${partidoId}/file/path/${nombreFile}`, {
       headers: this.corsHeaders,
     });
   }

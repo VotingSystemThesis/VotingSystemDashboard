@@ -41,8 +41,14 @@
         </div>
       </div>
       <div class="form-controller status" *ngIf="partido.name.length > 0">
-        <label>Estado</label>
-        <p>{{ partido.status ? "Activo" : "Inactivo" }}</p>
+        <div class="text">
+          <label>Estado</label>
+          <p>{{ partido.status ? "Activo" : "Inactivo" }}</p>
+        </div>
+        <button (click)="uploader.click()" *ngIf="!partido.status">
+          Validar
+        </button>
+        <input hidden type="file" #uploader (change)="uploadFile($event)" />
       </div>
       <button (click)="submitForm()">
         {{ partido.name.length > 0 ? " Editar Partido" : "Registrar Partido" }}

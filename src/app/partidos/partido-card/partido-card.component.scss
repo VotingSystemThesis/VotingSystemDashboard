@@ -2,6 +2,7 @@
 .card {
   @include title();
   @include paragraph();
+  @include button();
   width: 200px;
   height: 240px;
   border-radius: 20px;
@@ -11,6 +12,10 @@
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
+  button {
+    background-color: #afa4da;
+    color: black;
+  }
   transition: ease all 250ms;
   h1,
   p {

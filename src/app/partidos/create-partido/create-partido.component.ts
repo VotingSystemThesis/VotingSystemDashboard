@@ -2,6 +2,8 @@ import { DatePipe, formatDate } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { of } from 'rxjs';
 import { PoliticalpartyService } from 'src/app/services/politicalparty.service';
 import { Partido } from 'src/model/Partido';
 
@@ -15,6 +17,7 @@ export class CreatePartidoComponent implements OnInit {
     public dialogRef: MatDialogRef<CreatePartidoComponent>,
     private polliticalPartyService: PoliticalpartyService,
     private datePipe: DatePipe,
+    private snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data?: any
   ) {}
 
@@ -86,6 +89,38 @@ export class CreatePartidoComponent implements OnInit {
       }
     } else {
       console.log('Not Valid');
+    }
+  }
+  uploadFile($event: any) {
+    let selectedFile = $event.target.files[0];
+    if (selectedFile != null) {
+      if (selectedFile.name.includes('.csv')) {
+        this.polliticalPartyService
+          .validatePoliticalParty(selectedFile)
+          .subscribe(
+            (response: any) => {
+              console.log(response);
+            },
+            (err) => {
+              if (err.status == 200) {
+                this.polliticalPartyService
+                  .updateValidation(this.partido.id!, err.error.text)
+                  .subscribe((resp) => {
+                    this.snackBar.open('Validado correctamente', '', {
+                      duration: 2000,
+                      panelClass: ['green-snackbar'],
+                    });
+                    this.dialogRef.close();
+                  });
+              }
+            }
+          );
+      } else {
+        this.snackBar.open('Formato Erroneo', '', {
+          duration: 2000,
+          panelClass: ['red-snackbar'],
+        });
+      }
     }
   }
 }
