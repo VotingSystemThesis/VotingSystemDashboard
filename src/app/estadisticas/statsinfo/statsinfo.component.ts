@@ -44,6 +44,10 @@ export class StatsinfoComponent implements OnInit {
     this.singleElection = this.data.election;
     this.poblateData();
   }
+  randomIntFromInterval(min: number, max: number) {
+    // min and max included
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
   poblateData() {
     ///Grafica General
     this.voterService.getAllVoters().subscribe((resp: any) => {
@@ -60,7 +64,10 @@ export class StatsinfoComponent implements OnInit {
             this.generalVotingChart,
             'generalchart',
             ['Votos Confirmados', 'Votos Faltantes'],
-            [this.COLORS[8], this.COLORS[2]]
+            [
+              this.COLORS[this.randomIntFromInterval(0, this.COLORS.length)],
+              this.randomIntFromInterval(0, this.COLORS.length),
+            ]
           );
         });
     });
@@ -94,7 +101,7 @@ export class StatsinfoComponent implements OnInit {
             votingData.push(candidateToChart.count);
             labels.push(candidateToChart.name);
             colors.push(
-              this.COLORS[candidateCountList.indexOf(candidateToChart)]
+              this.COLORS[this.randomIntFromInterval(0, this.COLORS.length)]
             );
           });
           this.createGeneralPieChart(
