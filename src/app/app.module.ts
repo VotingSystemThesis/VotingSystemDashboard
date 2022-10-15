@@ -30,6 +30,8 @@ import { DatePipe } from '@angular/common';
 import { FingerprintComponent } from './votantes/fingerprint/fingerprint.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CreateElectionComponent } from './elecciones/create-election/create-election.component';
+import { StatscardComponent } from './estadisticas/statscard/statscard.component';
+import { StatsinfoComponent } from './estadisticas/statsinfo/statsinfo.component';
 
 const shortDatePatterns = {
   'aa-DJ': 'dd/MM/yyyy',
@@ -58,6 +60,8 @@ const shortDatePatterns = {
     CreateVotanteComponent,
     FingerprintComponent,
     CreateElectionComponent,
+    StatscardComponent,
+    StatsinfoComponent,
   ],
   imports: [
     BrowserModule,

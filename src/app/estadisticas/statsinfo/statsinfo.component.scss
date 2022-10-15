@@ -1,0 +1,9 @@
+@import "src/assets/styles/styles.scss";
+
+.chart-container {
+  @include title();
+  @include paragraph();
+  canvas {
+    width: 100%;
+  }
+}

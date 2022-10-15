@@ -3,17 +3,23 @@ import { Injectable } from '@angular/core';
 import { catchError, map, Observable, retry, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Votante } from 'src/model/Voter';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class VoterService {
   url = `${environment.hostUrl}/voter`;
-
-  constructor(private http: HttpClient) {}
+  token = '';
+  constructor(private http: HttpClient, private loginService: LoginService) {}
 
   getAllVoters(): Observable<any> {
-    return this.http.get(this.url.toString());
+    this.token = 'Bearer ' + this.loginService.getToken();
+
+    let corsHeaders = new HttpHeaders({
+      Authorization: this.token,
+    });
+    return this.http.get(this.url.toString(), { headers: corsHeaders });
   }
   createVoter(body: any) {
     return this.http.post(this.url, body);

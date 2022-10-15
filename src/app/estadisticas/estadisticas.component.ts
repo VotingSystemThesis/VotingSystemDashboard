@@ -1,4 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { EleccionVoting } from 'src/model/EleccionVoting';
+import { ElectoralvotingService } from '../services/electoralvoting.service';
 
 @Component({
   selector: 'app-estadisticas',
@@ -6,9 +8,6 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styleUrls: ['./estadisticas.component.scss'],
 })
 export class EstadisticasComponent implements OnInit {
-  constructor() {}
-  scrollTop = 0;
-  hideNav = false;
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(event: any) {
     const currentScroll = window.pageYOffset;
@@ -18,5 +17,20 @@ export class EstadisticasComponent implements OnInit {
       this.hideNav = false;
     }
   }
-  ngOnInit(): void {}
+  scrollTop = 0;
+  hideNav = false;
+
+  elections: EleccionVoting[] = [];
+  constructor(private electoralvotingService: ElectoralvotingService) {}
+
+  ngOnInit(): void {
+    this.initialize();
+  }
+  initialize() {
+    this.electoralvotingService
+      .getAllElectoralVoting()
+      .subscribe((resp: any) => {
+        this.elections = resp;
+      });
+  }
 }

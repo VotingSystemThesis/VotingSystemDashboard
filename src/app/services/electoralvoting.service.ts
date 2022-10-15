@@ -15,7 +15,7 @@ export class ElectoralvotingService {
     'Access-Control-Allow-Origin': '*',
   });
   url = `${environment.hostUrl}/manager/voting`;
-
+  graphicUrl = `${environment.hostUrl}/manager/graphic`;
   token: string = '';
   constructor(
     private loginService: LoginService,
@@ -69,6 +69,23 @@ export class ElectoralvotingService {
       Authorization: this.token,
     });
     return this.http.delete(`${this.url}/${id}`, {
+      headers: corsHeaders,
+    });
+  }
+  //Graphics
+  findVotedCountByElection(id: string) {
+    let corsHeaders = new HttpHeaders({
+      Authorization: this.token,
+    });
+    return this.http.get(`${this.graphicUrl}/electoral/voting/${id}`, {
+      headers: corsHeaders,
+    });
+  }
+  findVotedCountByCandidate(id: string) {
+    let corsHeaders = new HttpHeaders({
+      Authorization: this.token,
+    });
+    return this.http.get(`${this.graphicUrl}/candidate/${id}`, {
       headers: corsHeaders,
     });
   }

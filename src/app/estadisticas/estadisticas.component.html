@@ -7,4 +7,11 @@
       <p>Observe toda la información de la votación en vivo</p>
     </div>
   </div>
+  <div class="main-charts">
+    <h1>Elecciones</h1>
+    <div class="charts-elections">
+      <app-statscard *ngFor="let election of elections" [election]="election">
+      </app-statscard>
+    </div>
+  </div>
 </div>
