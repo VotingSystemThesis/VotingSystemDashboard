@@ -30,6 +30,6 @@ export class LoginService {
   logOut() {
     localStorage.setItem('token', '');
     this.isAuth = false;
-    this.router.navigate(['/home']);
+    this.router.navigate(['/login']);
   }
 }
