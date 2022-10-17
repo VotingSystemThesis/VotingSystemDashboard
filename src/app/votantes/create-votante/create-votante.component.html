@@ -1,6 +1,8 @@
 <div class="container">
   <div class="header">
-    <h1>Registrar Votante</h1>
+    <h1>
+      {{ voter.name.length > 0 ? "Editar Votante" : "Registrar Votante" }}
+    </h1>
     <div class="actions">
       <button (click)="deleteVoter()" *ngIf="voter.name.length > 0">
         <mat-icon>delete</mat-icon>

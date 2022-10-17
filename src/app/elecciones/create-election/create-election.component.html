@@ -1,6 +1,12 @@
 <div class="container">
   <div class="header">
-    <h1>Generar Eleccion</h1>
+    <h1>
+      {{
+        election.description.length > 0
+          ? "Editar Eleccion"
+          : "Registrar Eleccion"
+      }}
+    </h1>
     <div class="actions">
       <button
         (click)="deleteElection()"

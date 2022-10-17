@@ -11,6 +11,12 @@
   padding: 10px;
   display: flex;
   box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  @include button();
+  button {
+    width: 80px;
+  }
   .logo {
     position: absolute;
     left: 20px;
@@ -45,6 +51,6 @@
   }
 }
 
-.navbar-container.hide{
+.navbar-container.hide {
   opacity: 0;
 }

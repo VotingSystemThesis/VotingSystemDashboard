@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,7 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
   @Input() isHide = false;
-  constructor() {}
+  constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {}
+  logout() {
+    this.loginService.logOut();
+  }
 }
