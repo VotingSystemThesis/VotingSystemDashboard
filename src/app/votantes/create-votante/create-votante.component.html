@@ -23,6 +23,14 @@
             />
             <mat-icon>person</mat-icon>
           </div>
+          <p
+            *ngIf="
+              votanteForm.get('name')?.errors && votanteForm.get('name')?.dirty
+            "
+            class="error"
+          >
+            Es necesario un nombre
+          </p>
         </div>
         <div class="form-controller">
           <label>Apellido</label>
@@ -34,6 +42,15 @@
             />
             <mat-icon>person</mat-icon>
           </div>
+          <p
+            *ngIf="
+              votanteForm.get('lastname')?.errors &&
+              votanteForm.get('lastname')?.dirty
+            "
+            class="error"
+          >
+            Es necesario un apellido
+          </p>
         </div>
         <div class="form-controller">
           <label>Genero</label>
@@ -46,7 +63,7 @@
                 value="----"
                 [selected]="true"
                 [disabled]="true"
-                *ngIf="voter.name.length == 0"
+                *ngIf="true"
               >
                 Seleccione su genero
               </option>
@@ -66,6 +83,15 @@
             />
             <mat-icon>mail</mat-icon>
           </div>
+          <p
+            *ngIf="
+              votanteForm.get('email')?.errors &&
+              votanteForm.get('email')?.dirty
+            "
+            class="error"
+          >
+            Ingrese un email correcto
+          </p>
         </div>
         <div class="form-controller">
           <label>DNI</label>
@@ -77,6 +103,14 @@
             />
             <mat-icon>badge</mat-icon>
           </div>
+          <p
+            *ngIf="
+              votanteForm.get('dni')?.errors && votanteForm.get('dni')?.dirty
+            "
+            class="error"
+          >
+            Ingrese un DNI correcto
+          </p>
         </div>
       </div>
       <div class="second-part-container">
@@ -102,6 +136,14 @@
             />
             <mat-icon>person</mat-icon>
           </div>
+          <p
+            *ngIf="
+              votanteForm.get('city')?.errors && votanteForm.get('city')?.dirty
+            "
+            class="error"
+          >
+            Es necesario ingresar la ciudad
+          </p>
         </div>
       </div>
     </form>

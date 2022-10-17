@@ -2,6 +2,7 @@ import { DatePipe, formatDate } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { VoterService } from 'src/app/services/voter.service';
 import { Votante } from 'src/model/Voter';
 
@@ -15,6 +16,8 @@ export class CreateVotanteComponent implements OnInit {
     public dialogRef: MatDialogRef<CreateVotanteComponent>,
     private voterService: VoterService,
     private datePipe: DatePipe,
+    private snackBar: MatSnackBar,
+
     @Inject(MAT_DIALOG_DATA) public data?: any
   ) {}
   voter: Votante = new Votante('', '', '');
@@ -22,8 +25,12 @@ export class CreateVotanteComponent implements OnInit {
   votanteForm = new FormGroup({
     name: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
-    dni: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
+    dni: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(8),
+      Validators.pattern('^[0-9]*$'),
+    ]),
+    email: new FormControl('', [Validators.required, Validators.email]),
     gender: new FormControl(false, Validators.required),
     birthDate: new FormControl('', [Validators.required]),
     emissionDate: new FormControl('', Validators.required),
@@ -36,7 +43,7 @@ export class CreateVotanteComponent implements OnInit {
       this.initializeFormToEdit();
       this.isNew = false;
     } else {
-      this.votanteForm.reset();
+      //      this.votanteForm.reset();
     }
   }
 
@@ -65,7 +72,16 @@ export class CreateVotanteComponent implements OnInit {
     });
   }
 
-  deleteVoter() {}
+  deleteVoter() {
+    // this.voterService.deleteCandidate(this.candidate.id!).subscribe(
+    //   (resp) => {
+    //     this.closeDialog();
+    //   },
+    //   (err) => {
+    //     this.closeDialog();
+    //   }
+    // );
+  }
 
   closeDialog() {
     this.dialogRef.close();
@@ -89,6 +105,10 @@ export class CreateVotanteComponent implements OnInit {
 
       if (this.isNew) {
         this.voterService.createVoter(body).subscribe((data: any) => {
+          this.snackBar.open('Se ha guardado correctamente', '', {
+            duration: 2000,
+            panelClass: ['green-snackbar'],
+          });
           this.closeDialog();
         });
       } else {
@@ -96,10 +116,17 @@ export class CreateVotanteComponent implements OnInit {
           .updateVoter(body, this.voter.id!)
           .subscribe((response: any) => {
             this.dialogRef.close();
+            this.snackBar.open('Se ha guardado correctamente', '', {
+              duration: 2000,
+              panelClass: ['green-snackbar'],
+            });
           });
       }
     } else {
-      console.log('No Valido');
+      this.snackBar.open('Rellene el formulario correctamente', '', {
+        duration: 2000,
+        panelClass: ['red-snackbar'],
+      });
     }
   }
 }

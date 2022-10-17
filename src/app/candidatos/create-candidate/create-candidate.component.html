@@ -23,6 +23,15 @@
             />
             <mat-icon>person</mat-icon>
           </div>
+          <p
+            *ngIf="
+              candidateForm.get('name')?.errors &&
+              candidateForm.get('name')?.dirty
+            "
+            class="error"
+          >
+            Es necesario un nombre
+          </p>
         </div>
         <div class="form-controller">
           <label>Apellido</label>
@@ -34,6 +43,15 @@
             />
             <mat-icon>person</mat-icon>
           </div>
+          <p
+            *ngIf="
+              candidateForm.get('lastname')?.errors &&
+              candidateForm.get('lastname')?.dirty
+            "
+            class="error"
+          >
+            Es necesario un apellido
+          </p>
         </div>
         <div class="form-controller">
           <label>Genero</label>
@@ -46,12 +64,12 @@
                 value="----"
                 [selected]="true"
                 [disabled]="true"
-                *ngIf="candidate.name.length == 0"
+                *ngIf="true"
               >
                 Seleccione su genero
               </option>
-              <option value="{{ true }}">Masculino</option>
-              <option value="{{ false }}">Femenino</option>
+              <option value="true">Masculino</option>
+              <option value="false">Femenino</option>
             </select>
           </div>
         </div>
@@ -59,6 +77,14 @@
           <label>Partido Politico</label>
           <div class="form-container">
             <select formControlName="politicalParty">
+              <option
+                [value]="'----'"
+                [selected]="true"
+                [disabled]="true"
+                *ngIf="true"
+              >
+                Seleccione su partido
+              </option>
               <option
                 *ngFor="let partido of polliticalParties"
                 [value]="partido.id"
@@ -74,6 +100,14 @@
           <label>Eleccion a Participar</label>
           <div class="form-container">
             <select formControlName="election">
+              <option
+                [value]="'----'"
+                [selected]="true"
+                [disabled]="true"
+                *ngIf="true"
+              >
+                Seleccione la eleccion a participar
+              </option>
               <option *ngFor="let election of elections" [value]="election.id">
                 {{ election.description }}
               </option>
@@ -90,6 +124,15 @@
             />
             <mat-icon>mail</mat-icon>
           </div>
+          <p
+            *ngIf="
+              candidateForm.get('email')?.errors &&
+              candidateForm.get('email')?.dirty
+            "
+            class="error"
+          >
+            Ingrese un email correcto
+          </p>
         </div>
         <div class="form-controller">
           <label>DNI</label>
@@ -101,6 +144,15 @@
             />
             <mat-icon>badge</mat-icon>
           </div>
+          <p
+            *ngIf="
+              candidateForm.get('dni')?.errors &&
+              candidateForm.get('dni')?.dirty
+            "
+            class="error"
+          >
+            Ingrese un DNI correcto
+          </p>
         </div>
 
         <div class="form-controller">

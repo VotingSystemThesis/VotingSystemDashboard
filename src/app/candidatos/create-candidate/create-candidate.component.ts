@@ -2,6 +2,7 @@ import { DatePipe, formatDate } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { CandidateService } from 'src/app/services/candidate.service';
 import { ElectoralvotingService } from 'src/app/services/electoralvoting.service';
 import { PoliticalpartyService } from 'src/app/services/politicalparty.service';
@@ -21,6 +22,8 @@ export class CreateCandidateComponent implements OnInit {
     private electoralVotingService: ElectoralvotingService,
     private candidateService: CandidateService,
     private datePipe: DatePipe,
+    private snackBar: MatSnackBar,
+
     @Inject(MAT_DIALOG_DATA) public data?: any
   ) {}
   isNew = true;
@@ -30,14 +33,17 @@ export class CreateCandidateComponent implements OnInit {
   politicalparty? = new Partido('', '', new Date(), false);
   candidate: Candidato = new Candidato('', '', '', '', new Date());
   candidateForm = new FormGroup({
-    name: new FormControl(' ', Validators.required),
-    lastname: new FormControl(' ', Validators.required),
-    dni: new FormControl('', Validators.maxLength(8)),
+    name: new FormControl('', Validators.required),
+    lastname: new FormControl('', Validators.required),
+    dni: new FormControl('', [
+      Validators.maxLength(8),
+      Validators.pattern('^[0-9]*$'),
+    ]),
     gender: new FormControl(false, Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
     dateBirth: new FormControl('', [Validators.required]),
-    politicalParty: new FormControl('', [Validators.required]),
-    election: new FormControl('', [Validators.required]),
+    politicalParty: new FormControl('----', [Validators.required]),
+    election: new FormControl('----', [Validators.required]),
   });
   ngOnInit(): void {
     this.partidoService.getAllPolliticalParty().subscribe((data) => {
@@ -49,8 +55,9 @@ export class CreateCandidateComponent implements OnInit {
           this.initializeFormToEdit();
           this.isNew = false;
         } else {
-          this.candidateForm.reset();
+          //    this.candidateForm.reset();
         }
+
         this.initializePoliticalParty();
         this.initializeElections();
       });
@@ -93,8 +100,6 @@ export class CreateCandidateComponent implements OnInit {
       gender: this.candidate.gender,
       dateBirth: formatDate(newdate, 'yyyy-MM-dd', 'en'),
     });
-
-    console.log(this.candidateForm);
   }
 
   updateFormGender(event: any, isNew = true) {
@@ -131,23 +136,37 @@ export class CreateCandidateComponent implements OnInit {
           .createCandidate(body)
           .subscribe((response: any) => {
             this.dialogRef.close();
+            this.snackBar.open('Se ha guardado correctamente', '', {
+              duration: 2000,
+              panelClass: ['green-snackbar'],
+            });
           });
       } else {
-        console.log(body);
         this.candidateService
           .updateCandidate(body, this.candidate.id!)
           .subscribe((response: any) => {
             this.dialogRef.close();
+            this.snackBar.open('Se ha guardado correctamente', '', {
+              duration: 2000,
+              panelClass: ['green-snackbar'],
+            });
           });
       }
     } else {
-      console.log('Not Valid');
+      this.snackBar.open('Rellene el formulario correctamente', '', {
+        duration: 2000,
+        panelClass: ['red-snackbar'],
+      });
     }
   }
   deleteCandidate() {
     this.candidateService.deleteCandidate(this.candidate.id!).subscribe(
       (resp) => {
         this.closeDialog();
+        this.snackBar.open('Se ha eliminado correctamente', '', {
+          duration: 2000,
+          panelClass: ['green-snackbar'],
+        });
       },
       (err) => {
         this.closeDialog();
