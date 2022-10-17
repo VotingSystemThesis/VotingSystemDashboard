@@ -107,7 +107,7 @@ export class CreatePartidoComponent implements OnInit {
                   .updateValidation(this.partido.id!, err.error.text)
                   .subscribe((resp) => {
                     this.snackBar.open('Validado correctamente', '', {
-                      duration: 2000,
+                      duration: 3000,
                       panelClass: ['green-snackbar'],
                     });
                     this.dialogRef.close();
@@ -117,7 +117,7 @@ export class CreatePartidoComponent implements OnInit {
           );
       } else {
         this.snackBar.open('Formato Erroneo', '', {
-          duration: 2000,
+          duration: 3000,
           panelClass: ['red-snackbar'],
         });
       }

@@ -32,6 +32,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CreateElectionComponent } from './elecciones/create-election/create-election.component';
 import { StatscardComponent } from './estadisticas/statscard/statscard.component';
 import { StatsinfoComponent } from './estadisticas/statsinfo/statsinfo.component';
+import { ConfirmationMessageComponent } from './common/confirmation-message/confirmation-message.component';
 
 const shortDatePatterns = {
   'aa-DJ': 'dd/MM/yyyy',
@@ -62,6 +63,7 @@ const shortDatePatterns = {
     CreateElectionComponent,
     StatscardComponent,
     StatsinfoComponent,
+    ConfirmationMessageComponent,
   ],
   imports: [
     BrowserModule,

@@ -47,12 +47,12 @@ export class VotanteCardComponent implements OnInit {
       .subscribe((data) => {
         if (data) {
           this.snackBar.open('Se ha registrado correctamente', '', {
-            duration: 2000,
+            duration: 3000,
             panelClass: ['green-snackbar'],
           });
         } else {
           this.snackBar.open('Ha ocurrido un error en el registro', '', {
-            duration: 2000,
+            duration: 3000,
             panelClass: ['red-snackbar'],
           });
         }

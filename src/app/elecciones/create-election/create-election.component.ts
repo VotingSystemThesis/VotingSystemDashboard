@@ -2,6 +2,7 @@ import { DatePipe, formatDate } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ElectoralvotingService } from 'src/app/services/electoralvoting.service';
 import { EleccionVoting } from 'src/model/EleccionVoting';
 
@@ -14,6 +15,7 @@ export class CreateElectionComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<CreateElectionComponent>,
     private datePipe: DatePipe,
+    private snackBar: MatSnackBar,
     private electoralVotingService: ElectoralvotingService,
     @Inject(MAT_DIALOG_DATA) public data?: any
   ) {}
@@ -49,6 +51,10 @@ export class CreateElectionComponent implements OnInit {
       },
       (err) => {
         this.dialogRef.close();
+        this.snackBar.open('Se ha eliminado correctamente', '', {
+          duration: 3000,
+          panelClass: ['green-snackbar'],
+        });
       }
     );
   }
@@ -78,6 +84,10 @@ export class CreateElectionComponent implements OnInit {
           .editElection(bodyToSendPut, this.election.id!)
           .subscribe((data: any) => {
             this.dialogRef.close(data);
+            this.snackBar.open('Se ha editado correctamente', '', {
+              duration: 3000,
+              panelClass: ['green-snackbar'],
+            });
           });
       } else {
         //Submit
@@ -85,10 +95,17 @@ export class CreateElectionComponent implements OnInit {
           .createElection(bodyToSendPost)
           .subscribe((data: any) => {
             this.dialogRef.close(data);
+            this.snackBar.open('Se ha registrado correctamente', '', {
+              duration: 3000,
+              panelClass: ['green-snackbar'],
+            });
           });
       }
     } else {
-      console.log('Not Valid');
+      this.snackBar.open('Rellene el formulario correctamente', '', {
+        duration: 3000,
+        panelClass: ['red-snackbar'],
+      });
     }
   }
 }

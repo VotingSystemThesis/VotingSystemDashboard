@@ -4,9 +4,9 @@
       {{ voter.name.length > 0 ? "Editar Votante" : "Registrar Votante" }}
     </h1>
     <div class="actions">
-      <button (click)="deleteVoter()" *ngIf="voter.name.length > 0">
+      <!-- <button (click)="deleteVoter()" *ngIf="voter.name.length > 0">
         <mat-icon>delete</mat-icon>
-      </button>
+      </button> -->
       <button class="close" (click)="closeDialog()">
         <mat-icon>close</mat-icon>
       </button>

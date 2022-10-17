@@ -106,7 +106,7 @@ export class CreateVotanteComponent implements OnInit {
       if (this.isNew) {
         this.voterService.createVoter(body).subscribe((data: any) => {
           this.snackBar.open('Se ha guardado correctamente', '', {
-            duration: 2000,
+            duration: 3000,
             panelClass: ['green-snackbar'],
           });
           this.closeDialog();
@@ -117,14 +117,14 @@ export class CreateVotanteComponent implements OnInit {
           .subscribe((response: any) => {
             this.dialogRef.close();
             this.snackBar.open('Se ha guardado correctamente', '', {
-              duration: 2000,
+              duration: 3000,
               panelClass: ['green-snackbar'],
             });
           });
       }
     } else {
       this.snackBar.open('Rellene el formulario correctamente', '', {
-        duration: 2000,
+        duration: 3000,
         panelClass: ['red-snackbar'],
       });
     }
