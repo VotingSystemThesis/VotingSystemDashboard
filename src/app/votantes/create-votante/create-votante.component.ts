@@ -43,7 +43,7 @@ export class CreateVotanteComponent implements OnInit {
       this.initializeFormToEdit();
       this.isNew = false;
     } else {
-      //      this.votanteForm.reset();
+      this.votanteForm.reset();
     }
   }
 
@@ -57,7 +57,6 @@ export class CreateVotanteComponent implements OnInit {
   initializeFormToEdit() {
     var datebirth = this.voter.birthDate!.toString();
     var newdatebirth = datebirth.split('-').reverse().join('-');
-
     var emissinDate = this.voter.emissionDate!.toString();
     var newemissinDate = emissinDate.split('-').reverse().join('-');
     this.votanteForm.patchValue({
